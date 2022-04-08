@@ -69,7 +69,8 @@ class Webpage extends MY_Controller
         } else {
             $data['data'] = $this->News_model->getNewsById($id)->result();
         }
-        // print("<pre>" . print_r($data, true) . "</pre>");
+        $data['primary'] = $this->News_model->getPrimaryNews();
+        //print("<pre>" . print_r($this->News_model->getPrimaryNews(), true) . "</pre>");
 
         echo $this->blade->view()->make('webpage.news-and-update', $data);
     }

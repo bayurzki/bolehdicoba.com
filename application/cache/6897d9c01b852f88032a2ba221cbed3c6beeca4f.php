@@ -17,17 +17,18 @@
 
     <!-- section recently news -->
     <section id="recently-news">
-      <div class="container container-no-left">
+      <div class="container">
         <div class="row justify-content-center">
-          <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>        
-          <div class="col-sm-7 small--hide">
-            <img src="<?php echo base_url('assets/images/' . @$row->img_path) ?>" width="100%">
+          
+          <div class="col-sm-6 small--hide">
+            <img src="<?php echo base_url('assets/images/' . $primary[0]->img_path) ?>" width="100%">
           </div>
-          <div class="col-sm-5 d-flex align-items-center padding-wwd pt-mobile-5 pb-mobile-4">
+          <div class="col-sm-6 pl-5 d-flex align-items-center pt-mobile-5 pb-mobile-4">
             <div>
-              <span data-aos="fade-left" class="heading text-secondary-small"><?php echo e(@$row->category); ?></span>
-              <h1 data-aos="fade-left" data-aos-delay="200" class="title font-24">Collection of short readings about digital marketing fundamentals, curated news, and exciting stories.</h1>
-              <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower(@$row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', @$row->title)) . '/' . @$row->id); ?>"> 
+              <span data-aos="fade-left" class="heading text-secondary-small"><?=$primary[0]->category?></span>
+              <h1 data-aos="fade-left" data-aos-delay="200" class="title font-24"><?=$primary[0]->title?></h1>
+              <p class="streatments"><?=$primary[0]->streatments?></p>
+              <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $primary[0]->title)) . '/' . $primary[0]->id)?> "> 
                 <button type="button" class="btn bdd-primary-btn mt3 text-uppercase mt-mobile-3">
                   read more 
                   <img src="<?php echo base_url() ?>assets/webpage/icons/12/blackright_arrow_ic.png" class="pl-4 img-fluid">
@@ -36,9 +37,8 @@
             </div>
           </div>
           <div class="col mt-mobile-3 pl-mobile-0 pr-mobile-5 medium-up--hide">
-            <img src="<?php echo base_url('assets/images/' . @$row->img_path) ?>" class="img-fluid">
+            <img src="<?php echo base_url('assets/images/' . $primary[0]->img_path) ?>" class="img-fluid">
           </div>
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
       </div>
     </section>
@@ -47,13 +47,13 @@
     <hr class="spacing">
 
     <!-- section our streatments -->
-    <section id="our-streatments">
+    <!-- <section id="our-streatments">
       <div class="container p-25">
           <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>              
           <h1 data-aos="fade-left" data-aos-delay="200" class="our-streatment font-20">“<?php echo e(@$row->streatments); ?>”</h1>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </div>
-    </section>
+    </section> -->
     <!-- end section -->
 
     <hr class="spacing">
@@ -159,8 +159,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
 
-          <h3 class="title-post h3 mb-3 col-sm-9">News & Blogs</h3>
-          <div class="filter col-sm-3 pt-mobile-2">
+          <h3 class="title-post h3 mb-3 col-sm-9">Newest Article</h3>
+          <div style="display: none;" class="filter col-sm-3 pt-mobile-2">
             <select id="filter-menu" class="mb-mobile-5">      
               <option value="latest">Latest Post</option>     
             </select>
@@ -255,6 +255,7 @@
           },
           success(res) {
             let categoryTemp = []
+            console.log(res)
 
             filterTag.innerHTML = ``
             pagination.innerHTML = ``
@@ -320,7 +321,8 @@
               } else if (hours_diff < 24) {
                 diff = hours_diff + " hours ago"
               }
-
+              var str = item.streatments
+              if(str.length > 120) str = str.substring(0,120);
               filterTag.innerHTML += `                 
                  <div key="` + url +`" class="mb-4 col-6 col-sm-8 col-md-6 col-lg-4">
                    <div style="overflow: hidden;">
@@ -331,6 +333,7 @@
                         <a href="news-and-update/` + url.toLowerCase() + `">
                           <h5 class="card-title" style="border-bottom: 0;">${item.title}</h5>
                         </a>
+                        <p class="streatments mb-0">`+str+`</p>
                       </div>
                       <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
                         <div class="views text-secondary-small">    

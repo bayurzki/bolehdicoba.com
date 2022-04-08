@@ -50,6 +50,15 @@ class News_model extends CI_Model
         return $query;
     }
 
+    public function getPrimaryNews()
+    {
+        $cond = array();
+
+        $query = $this->db->where('primary_post','1')->get('news_update')->result();
+
+        return $query;
+    }
+
     public function getAllNews()
     {
         $query = $this->db->get('news_update');
@@ -168,6 +177,8 @@ class News_model extends CI_Model
 
         return $query;
     }
+
+
 }
 
 /* End of file News_model.php */
