@@ -1,0 +1,79 @@
+@mixin prefix($property, $value, $prefixes: ()) {
+	@each $prefix in $prefixes {
+		#{'-' + $prefix + '-' + $property}: $value;
+	}
+
+	// Output standard non-prefixed declaration
+	#{$property}: $value;
+}
+
+@mixin transition($value) {
+	@include prefix(transition, $value, webkit moz ms o);
+}
+
+@mixin transform($value) {
+	@include prefix(transform, $value, webkit ms);
+}
+
+@mixin value-prefix($property, $value, $prefixes: ()) {
+	@each $prefix in $prefixes {
+		#{$property}: #{"-" + $prefix + "-" + $value};
+	}
+
+	// Output standard non-prefixed declaration
+	#{$property}: $value;
+}
+
+@mixin keyframes($str) {
+	@-webkit-keyframes #{$str} {
+		@content;
+	}
+	@-moz-keyframes #{$str} {
+		@content;
+	}
+	@-ms-keyframes #{$str} {
+		@content;
+	}
+	@keyframes #{$str} {
+		@content;
+	}
+}
+
+@mixin animation($str, $delay) {
+	animation: #{$str};
+	animation-delay: #{$delay};
+	-webkit-animation: #{$str};
+	-webkit-animation-delay: #{$delay};
+	-moz-animation: #{$str};
+	-moz-animation-delay: #{$delay};
+	-o-animation: #{$str};
+	-o-animation-delay: #{$delay};
+}
+
+.button-overlay {
+	display: flex;
+
+	&:hover {
+		button {
+			opacity: 1;
+		}
+
+		.overlay {
+			opacity: 0.3;
+		}
+	}
+
+	button,
+	.overlay {
+		@include prefix(transition, 0.3s linear, webkit moz ms o);
+	}
+
+	button {
+		top: 43%;
+		left: 40%;
+		margin: 0 auto;
+		opacity: 0;
+		position: absolute;
+		z-index: 1;
+	}
+}

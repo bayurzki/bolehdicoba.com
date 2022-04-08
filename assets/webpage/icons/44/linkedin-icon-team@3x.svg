@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>icons/44/linkedin-icon-team</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons/44/linkedin-icon-team" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="linkedin-icon-team">
+            <circle id="Oval-Copy-9" fill="#2A84E9" cx="22" cy="22" r="22"></circle>
+            <g id="linkedin" transform="translate(12.000000, 12.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M19.9950166,20 L19.9950166,19.9991663 L20,19.9991663 L20,12.6612939 C20,9.07155542 19.2300669,6.30630631 15.0490062,6.30630631 C13.0390406,6.30630631 11.6902042,7.41340634 11.13954,8.46298387 L11.0814005,8.46298387 L11.0814005,6.64143749 L7.11711712,6.64143749 L7.11711712,19.9991663 L11.2450217,19.9991663 L11.2450217,13.3849105 C11.2450217,11.6433955 11.5739252,9.95940297 13.722595,9.95940297 C15.8397034,9.95940297 15.8712649,11.9468476 15.8712649,13.4966209 L15.8712649,20 L19.9950166,20 Z" id="Path"></path>
+                <polygon id="Path" points="0.36036036 6.66666667 4.5045045 6.66666667 4.5045045 20 0.36036036 20"></polygon>
+                <path d="M2.38738739,0 C1.06943689,0 0,1.08453472 0,2.42109144 C0,3.75764817 1.06943689,4.86486486 2.38738739,4.86486486 C3.70533788,4.86486486 4.77477477,3.75764817 4.77477477,2.42109144 C4.7739464,1.08453472 3.70450951,0 2.38738739,0 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

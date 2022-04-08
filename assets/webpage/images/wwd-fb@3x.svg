@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="197px" height="194px" viewBox="0 0 197 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>wwd-fb</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-98.3%" y="-100.9%" width="296.6%" height="301.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="20" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.108462968   0 0 0 0 0.302973681   0 0 0 0 0.521257926  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="what_we_do" transform="translate(-720.000000, -2379.000000)">
+            <g id="wwd-fb" filter="url(#filter-1)" transform="translate(760.000000, 2399.000000)">
+                <rect id="Rectangle" fill="#2A84E9" x="0" y="0" width="117" height="114" rx="10"></rect>
+                <path d="M72,30.3894231 L72,38.9567308 L67.09375,38.9567308 C63.4761029,38.9567308 62.626622,40.6527648 62.5392008,43.1520055 L62.53125,49.7632212 L71.6875,49.7632212 L70.46875,59.3689904 L62.53125,59.3689904 L62.53125,84 L52.96875,84 L52.96875,59.3689904 L45,59.3689904 L45,49.7632212 L52.96875,49.7632212 L52.96875,42.6887019 C52.96875,34.4783654 57.8125,30 64.875,30 L67.117063,30.0366912 C69.4815089,30.1129096 71.3509615,30.289571 72,30.3894231 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

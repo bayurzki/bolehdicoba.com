@@ -1,0 +1,270 @@
+@import "commons/custom-bootstrap";
+@import "commons/variables";
+@import "commons/prefix";
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-family: "Product Sans";
+	font-size: 10pt;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+body {
+	overflow-x: hidden;
+
+	&::-webkit-scrollbar {
+		width: 0.25rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: white;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $primary;
+	}
+}
+
+button {
+	@include prefix(transition, 0.3s ease-in-out, webkit moz ms o);
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	color: whitesmoke;
+	font-weight: bold;
+	padding: 15px;
+
+	&:hover {
+		box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+			0 4px 15px 0 rgba(0, 0, 0, 0.15);
+	}
+
+	&:focus {
+		border: 1px solid rgba(123, 198, 183, 0.5);
+		border-radius: 0;
+		outline: none;
+	}
+
+	&:disabled {
+		@extend .disabled;
+		background: $text-muted;
+	}
+}
+
+label {
+	color: rgba($color: $text-muted, $alpha: 0.8);
+}
+
+span.required {
+	color: $required;
+}
+
+label.control-label {
+	@include transition(0.3s ease-in-out);
+	cursor: text;
+	font-size: $font-lg / 1.4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	opacity: 0.4;
+}
+
+input:disabled,
+textarea:disabled {
+	@extend .disabled;
+}
+
+input:focus {
+	border-color: rgba($color: $primary, $alpha: 0.6) !important;
+}
+
+input[type="file"] {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px rgba($color: $text-muted, $alpha: 0.7) solid;
+	position: relative;
+	z-index: 1;
+
+	&:disabled + .file-control-label {
+		background-color: rgba($color: #000000, $alpha: 0.2);
+		color: gray;
+		border-color: rgba($color: #000000, $alpha: 0.2);
+		pointer-events: none;
+	}
+
+	&:focus + .control-label,
+	&:valid + .control-label,
+	&:disabled + .control-label {
+		pointer-events: none;
+		top: -22px;
+		left: 2px;
+		font-size: $font-md;
+	}
+}
+
+textarea {
+	height: 140px;
+	resize: none !important;
+
+	&:focus + .control-label,
+	&:valid + .control-label,
+	&:disabled + .control-label {
+		@extend .control-label-not-empty;
+	}
+}
+
+:focus {
+	outline: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.disabled {
+	background-color: rgba($color: $text-muted, $alpha: 0.3) !important;
+	pointer-events: none;
+}
+
+.file-control-label {
+	@include transition(0.3s ease-in-out);
+	border: 3px $file-control-label solid;
+	border-radius: 48px;
+	color: $file-control-label;
+	cursor: pointer;
+	font-weight: bold;
+	letter-spacing: 2px;
+	padding: 16px 48px;
+	text-transform: uppercase;
+
+	&:hover {
+		background-color: $primary;
+		border-color: whitesmoke;
+		color: whitesmoke;
+	}
+}
+
+.form-control {
+	@include transition(border-color 0.15s ease-in-out);
+	background-clip: padding-box;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	color: #495057;
+	display: block;
+	font-size: 1rem;
+	line-height: 1.5;
+	padding: 0.375rem 0.75rem;
+	width: 100%;
+
+	&:focus {
+		background-color: #fff;
+		border-color: #80bdff;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		color: #495057;
+		outline: 0;
+	}
+}
+
+.form-group {
+	margin-bottom: $spacer-md * 1.5 !important;
+	position: relative;
+}
+
+.control-label-not-empty {
+	position: absolute;
+	pointer-events: none !important;
+	top: -22px !important;
+	left: 2px !important;
+	font-size: $font-md !important;
+}
+
+.uk-block {
+	display: block;
+	position: relative;
+}
+
+.text-muted {
+	color: #a0a0a0;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-danger {
+	color: $error;
+}
+
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.title {
+	margin-bottom: $spacer-md;
+	position: relative;
+	width: 100%;
+
+	p {
+		margin: auto 15%;
+	}
+
+	h1 {
+		display: inline-block;
+	}
+}
+
+.toast-app {
+	@include transition(0.3s ease-in-out);
+	@include transform(translateX(-50%));
+	background-color: rgba($color: #000000, $alpha: 0.7);
+	border-radius: 20px;
+	color: white;
+	display: flex;
+	padding: 16px;
+	position: fixed;
+	left: 50%;
+	right: 0;
+	bottom: 30px;
+	opacity: 1;
+	width: max-content;
+	z-index: 1;
+
+	&.failed {
+		background-color: orangered;
+	}
+
+	&.hide {
+		opacity: 0;
+	}
+
+	.close {
+		cursor: pointer;
+		margin-left: 8px;
+	}
+}
+
+@import "commons/media";

@@ -1,0 +1,244 @@
+<?php 
+                                foreach ($option as $val) {
+                            ?>
+                                    <option value="<?= $val ?>" ><?= $val ?></option>
+                            <?php
+                                }
+                            ?>
+
+=====================================
+
+@push('script')
+<script>
+    // output image preview
+    let imagePreview = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            let reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(e.target.files[0]); // convert to base64 string
+        }
+    }
+
+        // output filename
+    let loader = (e) => {
+        imagePreview(e)
+        let file = e.target.files
+
+        let output = document.getElementsByClassName('file-output')[0]
+        output.innerHTML = file[0].name
+    }
+
+    console.log("ID", document.getElementById('content_form'));
+    let fileInput = document.getElementById('image')
+    fileInput.addEventListener('change', loader)
+</script>
+@endpush
+
+@extends('layouts.app')
+@section('title', "BDD | Dashboard")
+@section('page-title', 'Dashboard')
+@push('stylesheet')
+   <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/dashboard.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+@endpush
+@section('content')
+<div class="uk-background-default" style="padding-top: 20px !important">
+    @foreach ($data as $row)        
+	<form id="content_form"
+		action="{{ !empty(@$row) ? base_url('post/editCase/' . $row->id) : base_url('post/addCase')}}"
+		method="post" enctype="multipart/form-data">
+		<!-- Main Title -->
+        <div class="main-title" style="z-index: 980;" uk-sticky="bottom: #offset;animation: uk-animation-slide-bottom-small">
+            <div class="uk-card uk-card-default uk-card-body" style="padding: 10px 20px 0px 20px">
+                <div class="uk-float-left">
+                	<h3 class="uk-text-muted">{{ !empty(@$row) ? 'Edit Main Content' : 'Add New Main Content'}}</h3>
+                </div>
+                <div class="uk-float-right">
+                	<button type="submit" class="uk-button uk-button-primary uk-float-right"
+                        style="margin-left: 15px">
+                        Submit
+                    </button>
+                </div>
+            </div>			
+		</div>
+
+		<!-- Main Page Content -->
+		<div class="uk-animation-slide-bottom-small">
+			<div class="uk-card uk-card-default uk-card-body uk-grid-small" uk-grid>
+				<div class="uk-width-1-2@s">
+					<label class="uk-form-label" for="form-stacked-text">Name</label>
+					<input class="uk-input" type="text" placeholder="Name" name="name"
+						value="{{ !empty(@$row) ? $row->name : ''}}">
+				</div>
+
+				<div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Category</label>
+                    <input class="uk-input" type="text" list="category" placeholder="Category" />
+					<datalist class="uk-select" name="category" id="category">
+                        @foreach ($category as $category_row)                            
+                        <option value="{{ $category_row->category }}" {{ @$category_row->category == $row->category ? 'selected' : '' }}>
+                            {{ $category_row->category }}
+                        </option>
+                        @endforeach
+					</datalist>
+				</div>
+
+				<div class="uk-width-1-1@s">
+					<label class="uk-form-label" for="form-stacked-text">Title</label>
+					<input class="uk-input" type="text" placeholder="Title" name="title"
+						value="{{ !empty(@$row) ? $row->title : ''}}">
+				</div>
+
+				<div class="uk-width-1-2@s">
+					<label class="uk-form-label" for="form-stacked-text">Image</label>
+                    <input class="uk-input input_image_main" type="file" name="img_path" id="image" data-img-type='main'>
+                    <p class="file-output">{{ !empty(@$row) ? $row->img_path : ''}}</p>
+                </div>
+
+				<div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Image Preview</label>	
+                    <img id="image-preview"
+                    @if (!empty($row))                        
+                        src="@php echo base_url() . 'assets/images/' . $row->img_path @endphp" 
+                    @else
+                        src="https://via.placeholder.com/150x150.png" 
+                    @endif
+                     alt="image_preview" width="150" height="150" style="object-fit: cover" />
+                </div>                				
+			</div>		
+		</div>
+    </form>
+    @endforeach
+</div>
+@endsection
+
+<?php
+    $CI = &get_instance();
+
+    if ($CI->session->flashdata("success")) {
+?>
+    @section('toast')
+        @include('admin.toast')
+    @endsection
+<?php
+    }
+?>
+
+=====================================
+
+@push('script')
+    
+<script>
+    // output image preview
+    let imagePreview = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            let reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(e.target.files[0]); // convert to base64 string
+        }
+    }
+
+        // output filename
+    let loader = (e) => {
+        imagePreview(e)
+        let file = e.target.files
+
+        let output = document.getElementsByClassName('file-output')[0]
+        output.innerHTML = file[0].name
+    }
+
+    console.log("ID", document.getElementById('content_form'));
+    let fileInput = document.getElementById('image')
+    fileInput.addEventListener('change', loader)
+</script>
+@endpush
+
+=====================================
+
+<a onclick="deleteConfirm({{ $item->id }})" href="#!">Delete</a>
+<a id="delete-{{ $item->id }}" href="<?= base_url('admin/deleteComponent/' . $item->id) ?>" hidden></a>
+
+=====================================
+
+                            @php
+                                $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                            @endphp    
+
+=====================================
+
+Array
+(
+    [0] => Array
+        (
+            [file_name] => 1605677871blog-post-1@2x.png
+            [file_type] => image/png
+            [file_path] => C:/Panji/xampp/htdocs/bdd-v2/assets/images/tes/
+            [full_path] => C:/Panji/xampp/htdocs/bdd-v2/assets/images/tes/1605677871blog-post-1@2x.png
+            [raw_name] => 1605677871blog-post-1@2x
+            [orig_name] => 1605677871blog-post-1@2x.png
+            [client_name] => blog-post-1@2x.png
+            [file_ext] => .png
+            [file_size] => 360.31
+            [is_image] => 1
+            [image_width] => 740
+            [image_height] => 540
+            [image_type] => png
+            [image_size_str] => width="740" height="540"
+        )
+
+    [1] => Array  
+
+======================================
+
+<li class="blog-menu"> 
+              <a href="#" class="nav-link active" data-active="0" data-category=""> 
+                All 
+              </a> 
+            </li>
+            @php
+              $index = 1;
+              $option = array();
+            @endphp
+            @foreach ($results as $row)
+              @if (!in_array($row->category, $option))                
+              <li id="category-{{ $row->id }}-{{ $row->category }}" class="blog-menu"> 
+                <a href="#" class="nav-link" data-active="{{ $index }}" data-category="{{ $row->category }}"> 
+                  {{ $row->category }}
+                </a>
+              </li>
+              @endif
+              @php
+                $index++;
+                array_push($option, $row->category);                  
+              @endphp
+            @endforeach
+
+                <option value="{{ $row->category }}">{{ $row->category }}</option>
+
+'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'u6065760_user_all',
+	'password' => 'userall123',
+	'database' => 'u6065760_hometryon',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE

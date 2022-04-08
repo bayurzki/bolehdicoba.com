@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="136px" height="154px" viewBox="0 0 136 154" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>mbl-wwd-fb</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-151.3%" y="-155.4%" width="402.6%" height="410.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="20" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.108462968   0 0 0 0 0.302973681   0 0 0 0 0.521257926  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Mobile-Responsive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="what_we_do" transform="translate(0.000000, -2266.000000)">
+            <g id="mbl-wwd-fb" filter="url(#filter-1)" transform="translate(20.000000, 2286.000000)">
+                <rect id="Rectangle" fill="#2A84E9" x="0" y="0" width="76" height="74" rx="10"></rect>
+                <path d="M47,19.2524038 L47,24.8052885 L43.9108796,24.8052885 C41.6331019,24.8052885 41.0982435,25.9045698 41.0432005,27.524448 L41.0381944,31.8094952 L46.8032407,31.8094952 L46.0358796,38.0354567 L41.0381944,38.0354567 L41.0381944,54 L35.0173611,54 L35.0173611,38.0354567 L30,38.0354567 L30,31.8094952 L35.0173611,31.8094952 L35.0173611,27.2241587 C35.0173611,21.9026442 38.0671296,19 42.5138889,19 L43.9255582,19.0237813 C45.4142834,19.0731822 46.5913462,19.1876849 47,19.2524038 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

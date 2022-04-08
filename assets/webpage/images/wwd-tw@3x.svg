@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="181px" height="177px" viewBox="0 0 181 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>wwd-tw</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-113.9%" y="-116.2%" width="327.7%" height="332.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="20" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.108462968   0 0 0 0 0.302973681   0 0 0 0 0.521257926  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="what_we_do" transform="translate(-951.000000, -2500.000000)">
+            <g id="wwd-tw" filter="url(#filter-1)" transform="translate(991.000000, 2519.000000)">
+                <rect id="Rectangle" fill="#94D8FF" x="0" y="0.5" width="101" height="98" rx="10"></rect>
+                <path d="M74,35.13125 C72.715736,37.08125 71.1104061,38.8179687 69.2715736,40.2195313 C69.3007614,40.6460937 69.3007614,41.0726563 69.3007614,41.4992187 C69.3007614,54.509375 59.8147208,69.5 42.4771574,69.5 C37.1357868,69.5 32.1738579,67.8851562 28,65.0820312 C28.7588832,65.1734375 29.4885787,65.2039063 30.2766497,65.2039063 C34.6840102,65.2039063 38.7411168,63.65 41.9809645,60.9992187 C37.8362944,60.9078125 34.3629442,58.0742188 33.1662437,54.1742188 C33.75,54.265625 34.3337563,54.3265625 34.9467005,54.3265625 C35.7931472,54.3265625 36.6395939,54.2046875 37.427665,53.9914062 C33.3135726,53.1208705 30.1790241,49.4867294 29.8898246,45.0103466 L29.8680181,44.2109375 L29.8680181,44.2109375 C31.1230964,44.9421875 32.5824873,45.3992188 34.1294416,45.4601562 C31.5901015,43.6929687 29.9263959,40.6765625 29.9263959,37.2640625 C29.9263959,35.4359375 30.393401,33.7601563 31.2106599,32.2976563 C35.8515228,38.2695312 42.8274112,42.1695312 50.6497462,42.5960938 C50.5038071,41.8648437 50.4162169,41.103125 50.4162169,40.3414062 C50.4162169,34.9179688 54.6192893,30.5 59.8439086,30.5 C62.5583756,30.5 65.0101523,31.6882812 66.7322335,33.6078125 C68.8629442,33.18125 70.9060914,32.3585937 72.715736,31.23125 C72.0152284,33.5164063 70.5266497,35.4359375 68.571066,36.6546875 C70.4682741,36.4414062 72.3071066,35.8929688 74,35.13125 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

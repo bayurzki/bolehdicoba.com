@@ -1,0 +1,20 @@
+User-agent: Googlebot
+Disallow: /*.php$
+Disallow: /*.inc$
+Disallow: /*?*
+Disallow: /*?
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: duggmirror
+Disallow: /
+
+User-agent: *
+Disallow: /application/*
+Disallow: /system/*
+Disallow: /system22/*
+Disallow: /assets/*
+
+
+Sitemap: https://bolehdicoba.com/sitemap.xml

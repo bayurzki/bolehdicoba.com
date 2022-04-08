@@ -1,0 +1,19 @@
+@import "commons/variables";
+@import "commons/template";
+#login-app {
+	@include app;
+
+	form {
+		@extend .reguler-box-shadow;
+		background-color: whitesmoke;
+		border-radius: 10px;
+		margin: 0 auto;
+		padding: $spacer-sm;
+		padding-top: $spacer-md * 1.5;
+		width: 30%;
+
+		input {
+			width: 100%;
+		}
+	}
+}

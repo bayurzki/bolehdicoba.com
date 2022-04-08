@@ -1,0 +1,39 @@
+@import "commons/variables";
+@import "commons/template";
+
+#edit-component-app {
+	@include app;
+
+	form {
+		@extend .reguler-box-shadow;
+		background-color: white;
+		border-radius: 10px;
+		margin: $spacer-md $spacer-lg;
+		padding: $spacer-md $spacer-md * 3;
+		padding-top: $spacer-lg * 3;
+
+		input,
+		select {
+			width: 100%;
+		}
+
+		.form-group i {
+			position: absolute;
+			top: 7px;
+			left: 6px;
+		}
+
+		#cke_description {
+			margin-top: $spacer-md;
+
+			& + label.control-label {
+				top: -$spacer-md * 1.5;
+			}
+		}
+
+		button {
+			background: #007bff;
+			border-radius: 10px !important;
+		}
+	}
+}

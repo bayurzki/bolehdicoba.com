@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>illustrations/72/digital_marketing_optimize</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="87.1904227%" y1="66.4432711%" x2="40.9831714%" y2="28.6498535%" id="linearGradient-1">
+            <stop stop-color="#FF5023" offset="0%"></stop>
+            <stop stop-color="#FBBA3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="9.69206768%" y1="46.9968436%" x2="102.532782%" y2="57.5179264%" id="linearGradient-2">
+            <stop stop-color="#0EB5A0" offset="0%"></stop>
+            <stop stop-color="#4952A1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="-32.4685786%" x2="100%" y2="141.818005%" id="linearGradient-3">
+            <stop stop-color="#0EB5A0" offset="0%"></stop>
+            <stop stop-color="#4952A1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="100%" x2="28.5017412%" y2="16.0161394%" id="linearGradient-4">
+            <stop stop-color="#FF5023" offset="0%"></stop>
+            <stop stop-color="#FBBA3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="30.6714893%" y1="32.1518444%" x2="72.453263%" y2="70.7335088%" id="linearGradient-5">
+            <stop stop-color="#0EB5A0" offset="0%"></stop>
+            <stop stop-color="#4952A1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="55.12%" y1="104.76493%" x2="48.4410858%" y2="19.5005049%" id="linearGradient-6">
+            <stop stop-color="#FF5023" offset="0%"></stop>
+            <stop stop-color="#FBBA3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="57.2562358%" y1="104.76493%" x2="47.7906545%" y2="19.5005049%" id="linearGradient-7">
+            <stop stop-color="#FF5023" offset="0%"></stop>
+            <stop stop-color="#FBBA3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.5%" y1="104.76493%" x2="46.1940571%" y2="19.5005049%" id="linearGradient-8">
+            <stop stop-color="#FF5023" offset="0%"></stop>
+            <stop stop-color="#FBBA3F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="illustrations/72/digital_marketing_optimize" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="72" height="72"></rect>
+        <g id="graph" transform="translate(2.000000, 8.000000)">
+            <path d="M5,8 L58,8 L58,41 C58,43.209139 56.209139,45 54,45 L9,45 C6.790861,45 5,43.209139 5,41 L5,8 L5,8 Z" id="Rectangle" fill="#FCBB40"></path>
+            <path d="M38.9333908,5 L14,45 L53.991593,45 C55.6533736,45 57,43.6601609 57,42.0069705 L57,42.0069705 L57,7.99302949 C57,6.34005362 55.6533736,5 53.991593,5 L53.991593,5 L38.9333908,5 Z" id="Fill-11" fill="url(#linearGradient-1)"></path>
+            <path d="M6,7 L6,41 C6,42.6568542 7.34314575,44 9,44 L54,44 C55.6568542,44 57,42.6568542 57,41 L57,7 L6,7 Z" id="Rectangle" stroke="#4952A2" stroke-width="2"></path>
+            <g id="Group">
+                <rect id="Rectangle" fill="#0FB5A0" x="0" y="0" width="63" height="8" rx="2"></rect>
+                <path d="M36,0 L61,0 C62.1045695,-2.02906125e-16 63,0.8954305 63,2 L63,6 C63,7.1045695 62.1045695,8 61,8 L30.3573043,8 L30.3573043,8 L36,0 Z" id="Rectangle" fill="url(#linearGradient-2)"></path>
+            </g>
+            <rect id="Rectangle" stroke="#4952A2" stroke-width="2" x="1" y="1" width="61" height="6" rx="2"></rect>
+            <line x1="32" y1="44" x2="32" y2="54.0642717" id="Path-4" stroke="#4952A2" stroke-width="2"></line>
+            <circle id="Oval" stroke="#4952A2" stroke-width="2" fill="url(#linearGradient-3)" cx="32" cy="54" r="3"></circle>
+        </g>
+        <g id="Group-8" transform="translate(14.000000, 22.000000)" fill-rule="nonzero" stroke="#4952A2" stroke-width="2">
+            <path d="M16.0073242,10.7141276 L9.10195312,10.7141276 L9.10195312,3.80875651 C9.10195312,3.40436198 8.77412109,3.07652995 8.36972656,3.07652995 C3.7546875,3.07652995 -3.19744231e-14,6.83111979 -3.19744231e-14,11.4462565 C-3.19744231e-14,16.0613932 3.75458984,19.8159831 8.36972656,19.8159831 C12.9848633,19.8159831 16.7394531,16.0613932 16.7394531,11.4462565 C16.7394531,11.0419596 16.4116211,10.7141276 16.0073242,10.7141276 Z" id="Path" fill="#0FB5A0"></path>
+            <path d="M8.53565343,0 C8.01731015,0 7.59710286,0.420207287 7.59710286,0.938550563 L7.59710286,10.7281161 C7.59710286,11.2464594 8.01731015,11.6666667 8.53565343,11.6666667 L18.325219,11.6666667 C18.8436874,11.6666667 19.2637695,11.2464594 19.2637695,10.7281161 C19.2637695,4.81279416 14.4511005,0 8.53565343,0 Z" id="Path" fill="url(#linearGradient-4)" stroke-linejoin="round"></path>
+        </g>
+        <rect id="Rectangle" stroke="#4952A2" stroke-width="2" fill="url(#linearGradient-5)" x="41" y="51" width="28" height="11" rx="4"></rect>
+        <rect id="Rectangle" stroke="#4952A2" stroke-width="2" fill="url(#linearGradient-6)" x="63" y="39" width="6" height="23" rx="2"></rect>
+        <rect id="Rectangle-Copy" stroke="#4952A2" stroke-width="2" fill="url(#linearGradient-7)" x="52" y="43" width="6" height="19" rx="2"></rect>
+        <rect id="Rectangle-Copy-2" stroke="#4952A2" stroke-width="2" fill="url(#linearGradient-8)" x="41" y="48" width="6" height="14" rx="2"></rect>
+        <line x1="39" y1="29.5" x2="52.5616116" y2="29.5" id="Path-5" stroke="#4952A2" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="39" y1="34.7417059" x2="46" y2="34.7417059" id="Path-5-Copy" stroke="#4952A2" stroke-width="2" stroke-linecap="round"></line>
+    </g>
+</svg>

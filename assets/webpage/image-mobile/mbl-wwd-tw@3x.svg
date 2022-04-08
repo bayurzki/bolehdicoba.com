@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="143px" height="142px" viewBox="0 0 143 142" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>mbl-wwd-tw</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-182.5%" y="-185.5%" width="465.1%" height="471.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="20" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.108462968   0 0 0 0 0.302973681   0 0 0 0 0.521257926  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Mobile-Responsive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="what_we_do" transform="translate(-110.000000, -2344.000000)">
+            <g id="mbl-wwd-tw" filter="url(#filter-1)" transform="translate(150.000000, 2364.000000)">
+                <rect id="Rectangle" fill="#94D8FF" x="0" y="0" width="63" height="62" rx="10"></rect>
+                <path d="M47,21.85 C46.1903553,23.05 45.1782995,24.11875 44.0190355,24.98125 C44.0374365,25.24375 44.0374365,25.50625 44.0374365,25.76875 C44.0374365,33.775 38.0571066,43 27.1269036,43 C23.7595178,43 20.6313452,42.00625 18,40.28125 C18.4784264,40.3375 18.9384518,40.35625 19.4352792,40.35625 C22.2138325,40.35625 24.7715736,39.4 26.8140863,37.76875 C24.2011421,37.7125 22.0114213,35.96875 21.2569797,33.56875 C21.625,33.625 21.9930203,33.6625 22.3794416,33.6625 C22.9130711,33.6625 23.4467005,33.5875 23.9435279,33.45625 C21.349861,32.9205357 19.3737326,30.6841412 19.1914112,27.929444 L19.1776636,27.4375 L19.1776636,27.4375 C19.9689086,27.8875 20.8889594,28.16875 21.8642132,28.20625 C20.2633249,27.11875 19.214467,25.2625 19.214467,23.1625 C19.214467,22.0375 19.5088832,21.00625 20.0241117,20.10625 C22.9498731,23.78125 27.3477157,26.18125 32.2791878,26.44375 C32.1871827,25.99375 32.1319628,25.525 32.1319628,25.05625 C32.1319628,21.71875 34.7817259,19 38.0755076,19 C39.786802,19 41.3324873,19.73125 42.4181472,20.9125 C43.7614213,20.65 45.0494924,20.14375 46.1903553,19.45 C45.748731,20.85625 44.8102792,22.0375 43.5774112,22.7875 C44.7734772,22.65625 45.9327411,22.31875 47,21.85 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+@import "commons/prefix";
+
+#case-form-app {
+	#input-category {
+		@include transition(0.2s ease-in-out);
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		color: #666;
+		display: inline-block;
+		height: 40px;
+		max-width: 100%;
+		padding: 0 10px;
+		transition-property: color, background-color, border;
+		vertical-align: middle;
+		width: 100%;
+	}
+
+	.file-control-label {
+		display: flex;
+		display: -ms-flexbox;
+		width: max-content;
+	}
+
+	#image-preview {
+		height: 150px;
+		width: 100%;
+	}
+}

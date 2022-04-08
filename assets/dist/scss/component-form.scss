@@ -1,0 +1,22 @@
+#component-form-app {
+	.file-control-label {
+		display: flex;
+		display: -ms-flexbox;
+		width: max-content;
+	}
+
+	.image-preview-container label {
+		display: block;
+	}
+
+	.image-preview {
+		height: 150px;
+		object-fit: contain;
+		width: 100%;
+
+		&.gallery {
+			padding: 8px;
+			width: 50%;
+		}
+	}
+}
