@@ -62,13 +62,6 @@
 						value="{{ !empty(@$row) ? $row->title : ''}}">
                 </div>
 
-                <div class="uk-width-1-1@s">
-                    <label class="uk-form-label" for="form-stacked-text">Visibility</label>
-                    <select class="uk-input" name="is_public">
-                        <option value="1">Public</option>
-                        <option value="0">Limited</option>
-                    </select>
-                </div>
                 
                 <div class="uk-width-1-1@s">
                     <label class="uk-form-label" for="form-stacked-text">Set as Primary Post</label>
