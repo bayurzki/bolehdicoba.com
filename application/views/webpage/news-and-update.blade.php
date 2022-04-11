@@ -21,25 +21,29 @@
       <div class="container">
         <div class="row justify-content-center">
           
-          <div class="col-sm-6 small--hide">
+          <div class="col-sm-6">
             <img src="<?php echo base_url('assets/images/' . $primary[0]->img_path) ?>" width="100%">
           </div>
-          <div class="col-sm-6 pl-5 d-flex align-items-center pt-mobile-5 pb-mobile-4">
+          <div class="col-sm-6 pl-dektop-5 d-flex align-items-center">
             <div>
-              <span data-aos="fade-left" class="heading text-secondary-small"><?=$primary[0]->category?></span>
+              <!-- <span data-aos="fade-left" class="heading text-secondary-small"><?=$primary[0]->category?></span> -->
               <h1 data-aos="fade-left" data-aos-delay="200" class="title font-24"><?=$primary[0]->title?></h1>
               <p class="streatments"><?=$primary[0]->streatments?></p>
-              <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $primary[0]->title)) . '/' . $primary[0]->id)?> "> 
-                <button type="button" class="btn bdd-primary-btn mt3 text-uppercase mt-mobile-3">
-                  read more 
-                  <img src="<?php echo base_url() ?>assets/webpage/icons/12/blackright_arrow_ic.png" class="pl-4 img-fluid">
-                </button>
-              </a> 
+              <div class="d-flex">
+                <div class="date" style="margin-top: 7px;">
+                  <?=date('d F Y',strtotime($primary[0]->created_at))?> | 9.3K
+                </div>
+                <div class="action" style="margin-left: auto;">
+                  <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $primary[0]->title)) . '/' . $primary[0]->id)?> "> 
+                    <button type="button" class="btn btn-transparant font-green mt3 text-uppercase">
+                      read more 
+                      <img src="<?php echo base_url() ?>assets/webpage/icons/12/arrow-rg-green.png" class="pl-1 img-fluid">
+                    </button>
+                  </a> 
+                </div>
             </div>
           </div>
-          <div class="col mt-mobile-3 pl-mobile-0 pr-mobile-5 medium-up--hide">
-            <img src="<?php echo base_url('assets/images/' . $primary[0]->img_path) ?>" class="img-fluid">
-          </div>
+          
         </div>
       </div>
     </section>

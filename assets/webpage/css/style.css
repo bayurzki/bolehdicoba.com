@@ -1566,7 +1566,11 @@ nav #navbarNav {
   
 }
 
-.streatments{
+.streatments,.date{
   color: #373737;
   font-size: 18px;
+}
+
+.font-green{
+  color: #33B8A5;
 }
