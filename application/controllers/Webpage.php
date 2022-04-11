@@ -62,8 +62,8 @@ class Webpage extends MY_Controller
 
     public function newsAndUpdate($name = '', $id = '', $category = '')
     {
-        $data['results'] = $this->News_model->getAllNews()->result();
-
+        $data['results'] = $this->News_model->getAllNews2()->result();
+        
         if ($name == '' || $id == '') {
             $data['data'] = $this->News_model->getOnlyOneNews()->result();
         } else {

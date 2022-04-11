@@ -13,7 +13,9 @@
         $data = (object) array("once" => 0);
     }
     @endphp
-
+    <?php 
+    $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($primary[0]->title))); 
+    ?>
     <hr class="spacing small--hide"></hr>
 
     <!-- section recently news -->
@@ -34,7 +36,7 @@
                   <?=date('d F Y',strtotime($primary[0]->created_at))?> | 9.3K
                 </div>
                 <div class="action" style="margin-left: auto;">
-                  <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $primary[0]->title)) . '/' . $primary[0]->id)?> "> 
+                  <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . $urlna . '/' . $primary[0]->id)?> "> 
                     <button type="button" class="btn btn-transparant font-green mt3 text-uppercase">
                       read more 
                       <img src="<?php echo base_url() ?>assets/webpage/icons/12/arrow-rg-green.png" class="pl-1 img-fluid">
@@ -138,31 +140,7 @@
     <section id="news-and-blog">
       <div class="container">
         <div class="header-custom row mb-4">
-          <!-- Mobile menu -->
-          <ul id="mobile-menu" class="blog-nav d-flex p-0 overflow-mobile-auto medium-up--hide">
-            <li class="blog-menu"> 
-              <a href="#" class="nav-link active"> 
-                All
-              </a>
-            </li>
-          <!-- End of mobile menu -->            
-            @php
-                $option = array();
-            @endphp
-            @foreach ($results as $row)
-              @if (!in_array($row->category, $option))                
-              <li id="category-{{ $row->id }}-{{ $row->category }}" class="blog-menu"> 
-                <a href="#" class="nav-link"> 
-                  {{ $row->category }}
-                </a>
-              </li>
-              @endif
-              @php
-                array_push($option, $row->category);                  
-              @endphp
-            @endforeach
-          </ul>
-
+          
           <h3 class="title-post h3 mb-3 col-sm-9">Newest Article</h3>
           <div style="display: none;" class="filter col-sm-3 pt-mobile-2">
             <select id="filter-menu" class="mb-mobile-5">      
@@ -186,7 +164,7 @@
         <div class="row">
           <div class="pagging">
             <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center align-items-center pt-5" id="pagination" style="display: none;">
+              <ul class="pagination justify-content-center align-items-center pt-5" id="pagination">
               </ul>
             </nav>
           </div>
@@ -237,7 +215,7 @@
       }
 
       const getNewsByCategory = (val = '', page = 1) => {
-        const limit = 9
+        const limit = 6
         
         const data = {
           limit,
@@ -370,6 +348,7 @@
 
       // Run first time
       getNewsByCategory('')
+      console.log(getNewsByCategory(''))
 
       // get category selection
       $('#filter-menu').change(function() {

@@ -1574,3 +1574,95 @@ nav #navbarNav {
 .font-green{
   color: #33B8A5;
 }
+
+.list-news .list-title,
+.post .post-description p{
+  font-family: Gelion-SemiBold;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #122358;
+}
+
+.bottom-detail-news{
+  position: relative;
+}
+
+.bottom-detail-news:before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 1px;
+}
+
+.bottom-detail-news:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 1px;
+}
+
+.bottom-detail-news .tags,
+.bottom-detail-news .share{
+  margin-top: 25px;
+}
+
+.bottom-detail-news .category-detail{
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.bottom-detail-news .tags .title{
+  margin-right: 45px;
+  font-family: Gelion-SemiBold;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bottom-detail-news .tags > .content > span,
+.bottom-detail-news .category-detail > .content{
+  background: #EBEBEB;
+  border-radius: 100px;
+  font-family: Gelion-SemiBold;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  margin-right: 15px;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.bottom-detail-news .category-detail .title{
+  margin-right: 35px;
+  font-family: Gelion-SemiBold;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bottom-detail-news .share .title{
+  font-family: Gelion-SemiBold;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bottom-detail-news .share .icon-sosmed{
+  margin-top: 15px;
+}
+
+.bottom-detail-news .share .icon-sosmed > a{
+  margin-right: 10px;
+}

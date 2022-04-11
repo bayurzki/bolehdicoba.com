@@ -59,6 +59,20 @@ class News_model extends CI_Model
         return $query;
     }
 
+    public function getAllNews2()
+    {
+        $query = $this->db->where('primary_post','0')->get('news_update');
+
+        return $query;
+    }
+
+    public function getFeaturedNews($id)
+    {
+        $query = $this->db->where_not_in('id',$id)->limit(9)->get('news_update');
+
+        return $query;
+    }
+
     public function getAllNews()
     {
         $query = $this->db->get('news_update');
@@ -69,6 +83,7 @@ class News_model extends CI_Model
     public function getAllNewsWithLimit($limit = 3, $offset = 0)
     {
         $query = $this->db->from('news_update');
+        $query = $this->db->where('primary_post','0');
         $query = $this->db->order_by('created_at','desc');
         $query = $this->db->limit($limit, $offset);
         $query = $this->db->get();
@@ -96,6 +111,27 @@ class News_model extends CI_Model
         $limit = 3;
         $offset =0;
         $query = $this->db->from('news_update');
+        $query = $this->db->order_by('created_at','desc');
+        $query = $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    public function getAllNewsWithPagination2($id)
+    {
+        $config = $this->config();
+        $config['base_url'] = site_url('post/getNews');
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        // $query = $this->db->get('news_posts', $config['per_page'], $data['page']);
+        // $query = $this->db->get('news_update');
+        $limit = 3;
+        $offset =0;
+        $query = $this->db->from('news_update');
+        $query = $this->db->where_not_in('id',$id);
         $query = $this->db->order_by('created_at','desc');
         $query = $this->db->limit($limit, $offset);
         $query = $this->db->get();

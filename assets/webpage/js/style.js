@@ -49,7 +49,7 @@ $(document).ready(function(){
   $('.news-detail').owlCarousel({
     items: 3,
     loop: false,
-    margin: 10,
+    margin: 35,
     nav: true,
     navText: ["<div class='btn bdd-secondary-btn'><img src='https://bolehdicoba.com/assets/webpage/icons/12/yellowleft_arrow_ic.png'></div>","<div class='btn bdd-primary-btn'><img src='https://bolehdicoba.com/assets/webpage/icons/12/blackright_arrow_ic.png'></div>"],
     responsive: {

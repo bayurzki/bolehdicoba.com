@@ -33,14 +33,18 @@ class Post extends MY_Controller
 
     public function getNews($name = '', $id = '')
     {
-        $allNews = $this->News_model->getAllNewsWithPagination();
 
         if ($name == '' || $id == '') {
             $result = $this->News_posts_model->getOnlyOneNewsPosts();
+            $news = $this->News_model->getOnlyOneNews();
+            $featNews = $this->News_model->getAllNewsWithPagination();
+            $allNews = $this->News_model->getAllNewsWithPagination();
         } else {
             $result = $this->News_posts_model->getNewsPostsByNewsId($id);
+            $news = $this->News_model->getNewsById($id);
+            $featNews = $this->News_model->getFeaturedNews($id);
+            $allNews = $this->News_model->getAllNewsWithPagination2($id);
         }
-        
         // Get news posts ID to get Gallery
         if (!empty($result->result())) {
             foreach ($result->result() as $row) {
@@ -58,7 +62,9 @@ class Post extends MY_Controller
         echo $this->blade->view()->make('webpage.news-detail', [
             'result' => $result,
             'carousel_items' => $allNews,
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            'newsna' => $news->result()[0],
+            'featNews' => $featNews
         ]);
     }
 
@@ -222,7 +228,7 @@ class Post extends MY_Controller
         }
 
         // Get all categories
-        $categories = $this->News_model->getAllNews();
+        $categories = $this->News_model->getAllNews2();
 
         if ($filter == '') {
             $filtered = $this->News_model->getAllNewsWithLimit($limit, $offset);
