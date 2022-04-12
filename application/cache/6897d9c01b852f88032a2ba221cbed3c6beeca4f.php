@@ -22,7 +22,7 @@
       <div class="container">
         <div class="row justify-content-center">
           
-          <div class="col-sm-6">
+          <div class="col-sm-6 mt-5">
             <img src="<?php echo base_url('assets/images/' . $primary[0]->img_path) ?>" width="100%">
           </div>
           <div class="col-sm-6 pl-dektop-5 d-flex align-items-center">

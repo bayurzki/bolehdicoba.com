@@ -44,8 +44,18 @@ class NewsUpdate extends CI_Controller
             }
         }
 
-        // print("<pre>" . print_r($data, true) . "</pre>");
+        
         if ($this->News_model->addNews($data)) {
+            if ($data['primary_post'] == 1) {
+                $primary_old = $this->News_model->getPrimaryNews();
+                $data_update = array(
+                    'primary_post' => 0,
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+
+                $this->News_model->editNewsById($primary_old[0]->id, $data_update);
+            }
+
             // Insert success
             $data = [
                 "status" => true,
@@ -99,10 +109,20 @@ class NewsUpdate extends CI_Controller
             }
         }
 
-        $result = $this->News_model->editNewsById($id, $data);
+        if ($data['primary_post'] == 1) {
+            $primary_old = $this->News_model->getPrimaryNews();
+            $data_update = array(
+                'primary_post' => 0,
+                'updated_at' => date('Y-m-d H:i:s')
+            );
 
+            $this->News_model->editNewsById($primary_old[0]->id, $data_update);
+            
+        }
+        $result = $this->News_model->editNewsById($id, $data);
         if ($result) {
             // Update success
+            
             $data = [
                 "status" => true,
                 "message" => "Berhasil update data!"

@@ -93,8 +93,10 @@
                 <div class="row bottom-detail-news">
                     <div class="col-md-7">
                         <?php 
+                        $pb_share = 'pb-5';
                         if ($newsna->tags != NULL) {
-                        $tags = explode(',', $newsna->tags)
+                        $tags = explode(',', $newsna->tags);
+                        $pb_share = '';
                         ?>
                         <div class="tags">
                             <span class="title">Tags</span>
@@ -115,7 +117,7 @@
                         </div>
                         <?php } ?>
                     </div>
-                    <div class="col-md-5 share mb-mobile-5">
+                    <div class="col-md-5 share mb-mobile-5 <?=$pb_share?>">
                         <span class="title">Share</span>
                         <div class="icon-sosmed">
                             <a href="<?='https://twitter.com/intent/tweet?text='.base_url().''.$_SERVER['REQUEST_URI']?>"><img src="<?=base_url().'/assets/webpage/images/tw.png'?>" width="30" /></a>

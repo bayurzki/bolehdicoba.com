@@ -45,14 +45,19 @@ class News_model extends CI_Model
 
     public function getOnlyOneNews()
     {
-        $query = $this->db->limit(1)->get('news_update');
+        $cond = array(
+            'is_public' => 0
+        );
+        $query = $this->db->where($cond)->limit(1)->get('news_update');
 
         return $query;
     }
 
     public function getPrimaryNews()
     {
-        $cond = array();
+        $cond = array(
+            'primary_post' => 1
+        );
 
         $query = $this->db->where('primary_post','1')->get('news_update')->result();
 
@@ -61,14 +66,21 @@ class News_model extends CI_Model
 
     public function getAllNews2()
     {
-        $query = $this->db->where('primary_post','0')->get('news_update');
+        $cond = array(
+            'is_public' => 0
+        );
+
+        $query = $this->db->where($cond)->get('news_update');
 
         return $query;
     }
 
     public function getFeaturedNews($id)
     {
-        $query = $this->db->where_not_in('id',$id)->limit(9)->get('news_update');
+        $cond = array(
+            'is_public' => 0
+        );
+        $query = $this->db->where_not_in('id',$id)->where($cond)->limit(9)->get('news_update');
 
         return $query;
     }
