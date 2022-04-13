@@ -47,7 +47,7 @@ class Post extends MY_Controller
                 $allNews = $this->News_model->getAllNewsWithPagination2($id);
             }else{
                 $allNews = $this->News_model->getAllNewsWithPagination_limited($id);
-                var_dump("expression");
+                
             }
         }
         // Get news posts ID to get Gallery
