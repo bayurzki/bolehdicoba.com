@@ -46,17 +46,15 @@ class Post extends MY_Controller
             $allNews = $this->News_model->getAllNewsWithPagination2($id);
         }
         // Get news posts ID to get Gallery
+        $gallery = array();
         if (!empty($result->result())) {
             foreach ($result->result() as $row) {
                 if ($row->name == 'gallery') {
-                    $gallery = $this->Gallery_model->getGalleryByNewsPostsId($row->id)->result();
-                }else{
-                    $gallery = [];
+                    $gallery= $this->Gallery_model->getGalleryByNewsPostsId($row->id)->result();
                 }
             }
-        } else {
-            $gallery = [];
-        }
+        } 
+
         // print("<pre>" . print_r($result, true) . "</pre>");
         // die();
         echo $this->blade->view()->make('webpage.news-detail', [

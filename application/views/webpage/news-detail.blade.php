@@ -37,28 +37,32 @@
                             <hr class="spacing">
                         @break
                         @case('gallery')
-                            <div class="gajelas">  
+                            <div class="gallery">  
+                                <div class="row no-wrap pb-4 mt-4 thumbnail-container">
                                 @php
                                     $index = 0;
                                     $length = count($gallery);
-                                    @endphp
-                                @foreach ($gallery as $gallery_row)                        
-                                @if ($index == 0)
-                                <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid" style="width: 100%" />
-                                <div class="row no-wrap pb-4 mt-4 thumbnail-container">
-                                    @elseif ($index < $length)
-                                        <div class="col-sm-2 col-4">
-                                            <a href="#" class="thumbnail">
-                                                <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid">
-                                            </a>
-                                        </div>
-                                    @else
-                                </div>
-                                    @endif
+                                @endphp
+                                <?php 
+                                if(sizeof($gallery) == 1){
+                                    $col = 'col-md-12';
+                                }elseif (sizeof($gallery) == 6 or sizeof($gallery) == 9) {
+                                    $col = 'col-md-4 col-xs-6';
+                                }else{
+                                    $col = 'col-md-6 col-xs-6';                                   
+                                }
+                                ?>
+                                @foreach ($gallery as $gallery_row)                    
+                                    <div class="<?=$col?>">
+                                        <a href="#">
+                                            <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid">
+                                        </a>
+                                    </div>
                                     @php
                                         $index++;
                                     @endphp
                                 @endforeach
+                                </div>
                             </div>
 
                             <hr class="spacing">
