@@ -156,6 +156,26 @@ class News_model extends CI_Model
         return $query;
     }
 
+    public function getAllNewsWithPagination_limited($id)
+    {
+        $config = $this->config();
+        $config['base_url'] = site_url('post/getNews');
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $limit = 3;
+        $offset =0;
+        $query = $this->db->from('news_update');
+        $query = $this->db->where('is_public',1);
+        $query = $this->db->where_not_in('id',$id);
+        $query = $this->db->order_by('created_at','desc');
+        $query = $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+
+        return $query;
+    }
+
     public function getNewsLengthByCategory($filter)
     {
         $cond = array('category =' => $filter);

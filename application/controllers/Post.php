@@ -43,7 +43,12 @@ class Post extends MY_Controller
             $result = $this->News_posts_model->getNewsPostsByNewsId($id);
             $news = $this->News_model->getNewsById($id);
             $featNews = $this->News_model->getFeaturedNews($id);
-            $allNews = $this->News_model->getAllNewsWithPagination2($id);
+            if ($news->row()->is_public == 0) {
+                $allNews = $this->News_model->getAllNewsWithPagination2($id);
+            }else{
+                $allNews = $this->News_model->getAllNewsWithPagination_limited($id);
+                var_dump("expression");
+            }
         }
         // Get news posts ID to get Gallery
         $gallery = array();

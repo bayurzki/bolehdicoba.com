@@ -127,13 +127,17 @@
                         <h3 class="w-75 w-small--100">Featured News</h3>
                     </div>
                     <div class="list-news">
-                        @foreach ($featNews->result() as $carousel_row)    
+                        @foreach ($featNews->result() as $carousel_row)   
+                        <?php
+                        $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($carousel_row->title)));
+                        $link = base_url('news-and-update/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . $urlna . '/' . $carousel_row->id);
+                        ?> 
                         @if ($carousel_row->id == $news_id)
                             @continue;
                         @endif
                         <div class="row pt-5">
                             <div class="col-md-7 mt-2">
-                                <div class="list-title">{{ $carousel_row->title }}</div>
+                                <div class="list-title"><a href="<?=$link?>">{{ $carousel_row->title }}</a></div>
                                 <span class="text-secondary-small">
                                     @php
                                         // Declare timestamps
@@ -160,11 +164,13 @@
                                 </span>
                             </div>
                             <div class="col-md-5" style="max-height: 110px; overflow: hidden;">
+                                <a href="<?=$link?>">
                                 @if (empty($carousel_row->img_path))
                                 <img src="{{ base_url() . 'assets/images/default.png' }}" class="img-fluid">                                    
                                 @else
                                 <img src="{{ base_url() . 'assets/images/' . $carousel_row->img_path }}" class="img-fluid">
                                 @endif
+                                </a>
                             </div>
                         </div>
                         @endforeach
@@ -190,7 +196,11 @@
                                 @continue;
                             @endif
                             <!-- <a href="<?php echo base_url() . 'news-and-update/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $carousel_row->title)) . '/' . $carousel_row->id ?>"> -->
-                            <a href="#">
+                            <?php 
+                            $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($carousel_row->title)));
+                            $link = base_url('news-and-update/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . $urlna . '/' . $carousel_row->id);
+                            ?>
+                            <a href="<?=$link?>">
                                 <div class="post">
                                     @if (empty($carousel_row->img_path))
                                     <img src="{{ base_url() . 'assets/images/default.png' }}" width="370" height="270">                                    
@@ -198,7 +208,7 @@
                                     <img src="{{ base_url() . 'assets/images/' . $carousel_row->img_path }}" width="370" height="270">
                                     @endif
                                     <div class="post-description">
-                                    <p>{{ $carousel_row->title }}</p>
+                                    <p class="mb-0 mt-3">{{ $carousel_row->title }}</p>
                                     <span class="text-secondary-small">
                                         @php
                                             // Declare timestamps
