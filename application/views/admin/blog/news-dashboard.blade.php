@@ -28,6 +28,7 @@
                             <th>Name</th>		
                             <th>Category</th>					
                             <th>Title</th>
+                            <th>Visibillity</th>
                             <th>Posted At</th>
                             <th></th>
 						</tr>
@@ -48,21 +49,42 @@
                             if (!in_array($item->category, $option)) {
                                 array_push($option, $item->category);
                             }
+
+                            if ($item->primary_post == 1){
+                                $icon = 1;
+                            }else{
+                                $icon = 0;
+                            }
+
+                            if ($item->is_public == 0){
+                                $vis = 'Public';
+                            }else{
+                                $vis = 'Limited';
+                            }
                         @endphp
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
+                                <?php 
+                                if ($icon == 1) {
+                                    echo '<i class="mdi mdi-key-star"></i>';
+                                }
+                                $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($item->title))); 
+                                $link = 'news-and-update/' . str_replace(' ', '-', strtolower($item->category)) . '/' . $urlna . '/' . $item->id;
+                                ?>
                                 <a href="{{ base_url('admin/newsPosts/' . $item->name . '/' . $item->id) }}">
-                                    {{ ucfirst($item->name) }}
+                                    {{ ucfirst($item->name) }} 
                                 </a>
                             </td>
                             <td>{{ $item->category ? $item->category : '-' }}</td>
                             <td>{{ $item->title ? $item->title : '-' }}</td>
+                            <td><?=$vis?></td>
                             <td>{{ $item->created_at ? date('d M Y', strtotime($item->created_at)) : '-' }}</td>
                             <td>
-                                <a href="<?= base_url('admin/newsForm/' . $item->id) ?>">Edit</a>
-                                <a onclick="deleteConfirm({{ $item->id }})" href="#!">Delete</a>
-                                <a id="delete-{{ $item->id }}" href="<?= base_url('admin/deleteNews/' . $item->id) ?>" hidden></a>
+                                <a class="btn btn-sm btn-success" href="<?=base_url($link)?>" target="_blank" title="Preview"><i class="mdi mdi-eye"></i></a>
+                                <a class="btn btn-sm btn-info" href="<?= base_url('admin/newsForm/' . $item->id) ?>" title="Edit"><i class="mdi mdi-tooltip-edit"></i></a>
+                                <a class="btn btn-sm btn-danger" onclick="deleteConfirm({{ $item->id }})" href="#!" title="Delete"><i class="mdi mdi-delete-forever"></i></a>
+                                
                             </td>
                         </tr>
                         @endforeach 

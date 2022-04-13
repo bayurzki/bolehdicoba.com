@@ -65,8 +65,8 @@
                 <div class="uk-width-1-1@s">
                     <label class="uk-form-label" for="form-stacked-text">Visibility</label>
                     <select class="uk-input" name="is_public">
-                        <option value="1">Public</option>
-                        <option value="0">Limited</option>
+                        <option value="0">Public</option>
+                        <option value="1">Limited</option>
                     </select>
                 </div>
                 

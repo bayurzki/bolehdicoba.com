@@ -94,8 +94,13 @@ class News_model extends CI_Model
 
     public function getAllNewsWithLimit($limit = 3, $offset = 0)
     {
+        $cond = array(
+            'is_public' => 0
+        );
+
         $query = $this->db->from('news_update');
         $query = $this->db->where('primary_post','0');
+        $query = $this->db->where('is_public','0');
         $query = $this->db->order_by('created_at','desc');
         $query = $this->db->limit($limit, $offset);
         $query = $this->db->get();

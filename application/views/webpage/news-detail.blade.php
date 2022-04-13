@@ -37,46 +37,35 @@
                             <hr class="spacing">
                         @break
                         @case('gallery')
-                            <div class="gajelas">   
-                                <div class="row">
-                                    <div class="col-12 col-sm-2 small--hide"></div>
-                                    <div class="col-12 col-sm-9 second-banner position-relative">
-                                        @php
-                                            $index = 0;
-                                            $length = count($gallery);
-                                            @endphp
-                                        @foreach ($gallery as $gallery_row)                        
-                                        @if ($index == 0)
-                                        <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid" style="width: 100%" />
-                                        <div class="row no-wrap pb-4 mt-4 thumbnail-container">
-                                            @elseif ($index < $length)
-                                                <div class="col-sm-2 col-4">
-                                                    <a href="#" class="thumbnail">
-                                                        <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                            @else
+                            <div class="gajelas">  
+                                @php
+                                    $index = 0;
+                                    $length = count($gallery);
+                                    @endphp
+                                @foreach ($gallery as $gallery_row)                        
+                                @if ($index == 0)
+                                <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid" style="width: 100%" />
+                                <div class="row no-wrap pb-4 mt-4 thumbnail-container">
+                                    @elseif ($index < $length)
+                                        <div class="col-sm-2 col-4">
+                                            <a href="#" class="thumbnail">
+                                                <img src="<?= base_url('assets/images/gallery/' . $gallery_row->img_path) ?>" class="img-fluid">
+                                            </a>
                                         </div>
-                                            @endif
-                                            @php
-                                                $index++;
-                                            @endphp
-                                        @endforeach
-                                    </div>                 
+                                    @else
                                 </div>
+                                    @endif
+                                    @php
+                                        $index++;
+                                    @endphp
+                                @endforeach
                             </div>
 
                             <hr class="spacing">
                         @break
                         @case('reguler-description')
                             <!-- richtext -->
-                            <div class="row">
-                                <div class="col-sm-2 small--hide"></div>
-                                <div class="col-12 col-sm-9">
-                                    {!! $row->description !!}
-                                </div>
-                            </div>
-                        
+                            {!! $row->description !!}
                             <hr class="spacing">
                         @break
                         @default                  
