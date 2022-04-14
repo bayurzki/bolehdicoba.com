@@ -773,6 +773,9 @@ nav #navbarNav {
   width: 100%;
   max-width: 190px;
 }
+.detail-title{
+  font-size: 52px;
+}
 @media only screen and (max-width: 749px) {
   /* Owl Carousel */
   .owl-nav {
@@ -1242,6 +1245,9 @@ nav #navbarNav {
   }
 }
 @media only screen and (max-width: 578px) {
+  .detail-title{
+    font-size: 32px;
+  }
   .owl-carousel .owl-nav {
     padding-top: 10px;
   }
@@ -1665,4 +1671,14 @@ nav #navbarNav {
 
 .bottom-detail-news .share .icon-sosmed > a{
   margin-right: 10px;
+}
+
+blockquote p{
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  color: #373737;
 }

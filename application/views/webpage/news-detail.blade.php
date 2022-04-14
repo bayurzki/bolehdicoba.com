@@ -20,7 +20,7 @@
                             <!-- title case -->
                             <div class="title text-left pt-25 p-mobile-3 ">
                                 <span class="heading text-secondary-small">{{ $row->sub_title }}</span>
-                                <h3 class="w-75 w-small--100">{{ $row->title }}</h3>
+                                <h3 class="detail-title">{{ $row->title }}</h3>
                             </div>
                         @break
                         @case('banner')
@@ -124,7 +124,7 @@
                 <!-- title case -->
                 <div class="featured-news pt-25 pl-3">
                     <div class="title text-left">
-                        <h3 class="w-75 w-small--100">Featured News</h3>
+                        <h2 class="w-75 w-small--100">Featured News</h2>
                     </div>
                     <div class="list-news">
                         @foreach ($featNews->result() as $carousel_row)   
