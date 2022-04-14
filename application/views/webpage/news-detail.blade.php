@@ -180,7 +180,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="container-full-width d-flex flex-column justify-content-center bg-light pb-mobile-5">
+                <div class="container-full-width d-flex flex-column justify-content-center pb-mobile-5">
                     <div class="position-relative pt-5">
                         <div class="title-post pb-3">
                             <h4 class="text-left">Related Articles</h4>
