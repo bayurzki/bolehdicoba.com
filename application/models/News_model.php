@@ -80,7 +80,7 @@ class News_model extends CI_Model
         $cond = array(
             'is_public' => 0
         );
-        $query = $this->db->where_not_in('id',$id)->where($cond)->limit(9)->get('news_update');
+        $query = $this->db->where_not_in('id',$id)->where($cond)->limit(5)->order_by('id DESC')->get('news_update');
 
         return $query;
     }
