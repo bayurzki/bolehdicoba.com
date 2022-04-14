@@ -129,8 +129,11 @@
                     <div class="list-news">
                         @foreach ($featNews->result() as $carousel_row)   
                         <?php
-                        if (strlen($carousel_row->title) > 45)
-                        $str = substr($carousel_row->title, 0, 42) . '...';
+                        if (strlen($carousel_row->title) > 45){
+                            $str = substr($carousel_row->title, 0, 42) . '...';
+                        }else{
+                            $str = $carousel_row->title;
+                        }
                         $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($carousel_row->title)));
                         $link = base_url('news-and-update/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . $urlna . '/' . $carousel_row->id);
                         ?> 
