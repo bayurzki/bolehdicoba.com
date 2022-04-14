@@ -129,8 +129,8 @@
                     <div class="list-news">
                         @foreach ($featNews->result() as $carousel_row)   
                         <?php
-                        if (strlen($carousel_row->title) > 45){
-                            $str = substr($carousel_row->title, 0, 42) . '...';
+                        if (strlen($carousel_row->title) > 33){
+                            $str = substr($carousel_row->title, 0, 30) . ' ...';
                         }else{
                             $str = $carousel_row->title;
                         }
