@@ -129,6 +129,8 @@
                     <div class="list-news">
                         @foreach ($featNews->result() as $carousel_row)   
                         <?php
+                        if (strlen($carousel_row->title) > 45)
+                        $str = substr($carousel_row->title, 0, 42) . '...';
                         $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($carousel_row->title)));
                         $link = base_url('news-and-update/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . $urlna . '/' . $carousel_row->id);
                         ?> 
@@ -137,7 +139,7 @@
                         @endif
                         <div class="row pt-5">
                             <div class="col-md-7 mt-2">
-                                <div class="list-title"><a href="<?=$link?>">{{ $carousel_row->title }}</a></div>
+                                <div class="list-title"><a href="<?=$link?>">{{ $str }}</a></div>
                                 <span class="text-secondary-small">
                                     @php
                                         // Declare timestamps
