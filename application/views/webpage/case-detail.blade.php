@@ -10,27 +10,48 @@
             $result = (object) array("once" => 0);
         }
     @endphp
-    
-    <section id="title-case">
+    <?php //var_dump($result->result()) ?>
+    <section id="case-detail">
         @foreach ($result->result() as $row)
             @switch(@$row->name)
                 @case('category-and-title')
                     <!-- title case -->
+
                     <div class="container">
-                        <div class="title text-left p-25 p-mobile-3 ">
-                        <span class="heading text-secondary-small">{{ @$row->sub_title }}</span>
-                        <h3 class="w-75 w-small--100">{{ @$row->title }}</h3>
+                        <div class="row">
+                            <div class="col-md-1 col-sm-1">
+                                <div class="text-left pt-25 pt-mobile-3 ">
+                                    <img src="<?=base_url().'/assets/images/logo/'.$row->logo?>" class="img-fluid" >
+                                </div>
+                            </div>
+                            <div class="col-md-11 col-sm-11">
+                                <div class="title text-left p-25 p-mobile-3 ">
+                                    <h3 class="w-75 w-small--100">{{ @$row->titlena }}</h3>
+                                    <span class="heading text-secondary-small">{{ @$row->sub_title }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @break
                 @case('banner')
                     <!-- image banner -->
                     <div class="banner">
-                        <img src="{{ base_url() . 'assets/images/' . @$row->img_path }}" class="img-fluid small--hide w-100">
-                        <img src="{{ base_url() . 'assets/images/' . @$row->img_path }}" class="img-fluid medium-up--hide p-25">
+                        <img src="{{ base_url() . 'assets/images/' . @$row->post_img }}" class="img-fluid small--hide w-100">
+                        <img src="{{ base_url() . 'assets/images/' . @$row->post_img }}" class="img-fluid medium-up--hide p-25">
                     </div>
 
                     <hr class="spacing">
+                @break
+                @case('banner-centered')
+                <div class="container">
+                    <!-- image banner -->
+                    <div class="banner">
+                        <img src="{{ base_url() . 'assets/images/' . @$row->post_img }}" class="img-fluid small--hide w-100">
+                        <img src="{{ base_url() . 'assets/images/' . @$row->post_img }}" class="img-fluid medium-up--hide p-25">
+                    </div>
+
+                    <hr class="spacing">
+                </div>
                 @break
                 @case('description-with-side-sosmed')
                 <div class="container">
@@ -129,7 +150,7 @@
             @endswitch
         @endforeach
 
-        <div class="container-full-width h-550 d-flex flex-column justify-content-center bg-light pb-mobile-5">
+        <!-- <div class="container-full-width h-550 d-flex flex-column justify-content-center bg-light pb-mobile-5">
             <div class="container custom-position position-relative pt-mobile-5">
             <div class="title-post pb-3">
                 <h4 class="small--hide">More Case Studies</h4>
@@ -145,7 +166,6 @@
                     @if ($carousel_row->id == $case_id[0])
                         @continue;
                     @endif
-                    <!-- <a href="<?php echo base_url() . 'case-study/' . str_replace(' ', '-', strtolower($carousel_row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $carousel_row->title)) . '/' . $carousel_row->id ?>"> -->
                     <a href="#">
                         <div class="post">
                             @if (empty($carousel_row->img_path))
@@ -189,8 +209,14 @@
                     @endforeach
                 </div>
             </div>
+        </div> -->
+        <div style="background-color: #FFB14C!important;" class=" pt-5 pb-5 text-center d-flex flex-column justify-content-center">
+            <div class="container" style="background-color: #FFB14C!important;">
+                <h2 style="color: #fff !important;">Start Using Our Services</h2>
+                <p style="color: #fff !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <a href="https://wa.me/6281805757585" class="btn bdd-third-btn btn-rounded" target="_blank">Reach Out Now <i class="fa fa-arrow-right"></i></a>
+            </div>
         </div>
-
     </section>
 
     @include('webpage.layouts.footer')

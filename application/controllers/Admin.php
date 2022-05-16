@@ -37,23 +37,37 @@ class Admin extends MY_Controller
 		}
 	}
 
-	public function caseForm($id = '')
-	{
-		if ($this->session->userdata('username') != '') {
-			$categories = $this->Case_model->getAllCases()->result();
+	public function caseForm($id = ''){
 
+		if ($this->session->userdata('username') != '') {
+			$industry = $this->Case_model->industry();
+			$bisnis_size = $this->Case_model->bisnis_size();
+			$product = $this->Case_model->product();
+			$objective = $this->Case_model->objective();
+			$categories = $this->Case_model->getAllCases()->result();
+			$region = $this->Case_model->region();
 			if ($id != '') {
 				// for edit case
 				$data = $this->Case_model->getCaseById($id)->result();
 
 				echo $this->blade->view()->make('admin.case-form', [
 					'data' => $data,
-					'category' => $categories
+					'category' => $categories,
+					'industry' => $industry,
+					'bisnis_size' => $bisnis_size,
+					'product' => $product,
+					'region' => $region,
+					'objective' => $objective
 				]);
 			} else {
 				// for add case
 				echo $this->blade->view()->make('admin.case-form', [
-					'category' => $categories
+					'category' => $categories,
+					'industry' => $industry,
+					'bisnis_size' => $bisnis_size,
+					'product' => $product,
+					'region' => $region,
+					'objective' => $objective
 				]);
 			}
 		} else {

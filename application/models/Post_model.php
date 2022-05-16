@@ -82,7 +82,7 @@ class Post_model extends CI_Model
 
     public function getPostByCaseId($id)
     {
-        $this->db->select('*, posts.id as id, styles.name, styles.id as id_style')->from('posts')->join('styles', 'styles.id = posts.style_id')->where('case_id', $id);
+        $this->db->select('*,posts.title AS titlena, posts.img_path AS post_img, posts.id as id, styles.name, styles.id as id_style')->from('posts')->join('styles', 'styles.id = posts.style_id')->join('case_study', 'case_study.id = posts.case_id')->where('case_id', $id);
 
         $query = $this->db->get();
 

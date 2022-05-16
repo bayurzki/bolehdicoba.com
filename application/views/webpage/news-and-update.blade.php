@@ -14,7 +14,11 @@
     }
     @endphp
     <?php 
-    $urlna = str_replace(' ', '-', preg_replace('/[^A-Za-z0-9\-]/', '-', strtolower($primary[0]->title))); 
+    $string = str_replace(' ', '-', $primary[0]->title); // Replaces all spaces with hyphens.
+    $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+
+    $urlna = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+    $urlna = base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . $urlna . '/' . $primary[0]->id);
     ?>
     <hr class="spacing small--hide"></hr>
 
@@ -36,7 +40,7 @@
                   <?=date('d F Y',strtotime($primary[0]->created_at))?> | 9.3K
                 </div>
                 <div class="action" style="margin-left: auto;">
-                  <a href="<?php echo base_url('news-and-update/' . str_replace(' ', '-', strtolower($primary[0]->category)) . '/' . $urlna . '/' . $primary[0]->id)?> "> 
+                  <a href="<?=$urlna?> "> 
                     <button type="button" class="btn btn-transparant font-green mt3 text-uppercase">
                       read more 
                       <img src="<?php echo base_url() ?>assets/webpage/icons/12/arrow-rg-green.png" class="pl-1 img-fluid">

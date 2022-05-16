@@ -38,29 +38,93 @@
 		<!-- Main Page Content -->
 		<div class="uk-animation-slide-bottom-small">
 			<div class="uk-card uk-card-default uk-card-body uk-grid-small" uk-grid>
-				<div class="uk-width-1-2@s">
+				<div class="uk-width-1-1@s">
 					<label class="uk-form-label" for="form-stacked-text">Name</label>
 					<input class="uk-input" type="text" placeholder="Name" name="name"
 						value="{{ !empty(@$row) ? $row->name : ''}}">
 				</div>
 
-				<div class="uk-width-1-2@s">
-                    <label class="uk-form-label" for="form-stacked-text">Category</label>
-                <input id="input-category" type="text" list="category" placeholder="Category" name="category" value="{{ !empty(@$row) ? $row->category : ''}}" />
-					<datalist name="category" id="category">
-                        @foreach ($category as $category_row)      
-                        <option value="{{ $category_row->category }}" {{ @$category_row->category == @$row->category ? 'selected' : '' }}>
-                            {{ $category_row->category }}
+                <div class="uk-width-1-1@s">
+                    <label class="uk-form-label" for="form-stacked-text">Excerpt</label>
+                    <input class="uk-input" type="text" placeholder="Excerpt" name="excerpt"
+                        value="{{ !empty(@$row) ? $row->excerpt : ''}}">
+                </div>
+
+                <div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Product</label>
+                    <input id="input-category" type="text" list="product" placeholder="product" name="product" value="{{ !empty(@$row) ? $row->product : ''}}" />
+                    <datalist name="product" id="product">
+                        <?php for ($i=0; $i < sizeof($product) ; $i++) { ?>    
+                        <option value="<?=$product[$i] ?>" {{ @$product[$i] == @$row->category ? 'selected' : '' }} >
+                            <?=$product[$i] ?>
                         </option>
-                        @endforeach
-					</datalist>
+                        <?php } ?>
+                    </datalist >
+                </div>
+
+				<div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Industry</label>
+                    <input id="input-category" type="text" list="category" placeholder="Category" name="category" value="{{ !empty(@$row) ? $row->category : ''}}" />
+					<datalist name="category" id="category">
+                        <?php for ($i=0; $i < sizeof($industry) ; $i++) { ?>    
+                        <option value="<?=$industry[$i] ?>" {{ @$industry[$i] == @$row->category ? 'selected' : '' }}>
+                            <?=$industry[$i] ?>
+                        </option>
+                        <?php } ?>
+					</datalist >
 				</div>
 
-				<div class="uk-width-1-1@s">
+				<!-- <div class="uk-width-1-1@s">
 					<label class="uk-form-label" for="form-stacked-text">Title</label>
 					<input class="uk-input" type="text" placeholder="Title" name="title"
-						value="{{ !empty(@$row) ? $row->title : ''}}">
-				</div>
+						value="{{ !empty(@$row) ? $row->title : ''}}" required autocomplete="off">
+				</div> -->
+
+                <div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Business Size</label>
+                    <input id="input-category" type="text" list="bisnis_size" placeholder="Business Size" name="bisnis_size" value="{{ !empty(@$row) ? $row->bisnis_size : ''}}" required autocomplete="off"/>
+                    <datalist name="bisnis_size" id="bisnis_size">
+                        <?php for ($i=0; $i < sizeof($bisnis_size) ; $i++) { ?>    
+                        <option value="<?=$bisnis_size[$i] ?>" {{ @$bisnis_size[$i] == @$row->bisnis_size ? 'selected' : '' }}>
+                            <?=$bisnis_size[$i] ?>
+                        </option>
+                        <?php } ?>
+                    </datalist >
+                </div>
+                
+                <div class="uk-width-1-2@s">
+                    <label class="uk-form-label" for="form-stacked-text">Region</label>
+                    <input id="input-category" type="text" list="region" placeholder="region" name="region" value="{{ !empty(@$row) ? $row->region : ''}}" autocomplete="off" />
+                    <datalist name="region" id="region">
+                        <?php for ($i=0; $i < sizeof($region) ; $i++) { ?>    
+                        <option value="<?=$region[$i]['name'] ?>" {{ @$region[$i]['name']== @$row->region ? 'selected' : '' }}>
+                            <?=$region[$i]['name'] ?>
+                        </option>
+                        <?php } ?>
+                    </datalist >
+                </div>
+
+
+                <div class="uk-width-1-1@s">
+                    <label class="uk-form-label" for="form-stacked-text">Objective</label>
+                    <input id="input-category" type="email" list="objective" placeholder="objective" name="objective" value="{{ !empty(@$row) ? $row->objective : ''}}" class="multidatalist" multiple required autocomplete="off"/>
+                    <datalist name="objective" id="objective">
+                        <?php for ($i=0; $i < sizeof($objective) ; $i++) { ?>    
+                        <option value="<?=$objective[$i]['parent'] ?>" {{ @$objective[$i]['parent']== @$row->objective ? 'selected' : '' }}>
+                            <?=$objective[$i]['parent'] ?>
+                        </option>
+                        <?php 
+                            for ($x=0; $x < sizeof($objective[$i]['child']); $x++) { 
+                        ?>
+                            <option value="<?= $objective[$i]['child'][$x] ?>"></option>
+                        <?php
+                            }
+                        } 
+                        ?>
+                    </datalist >
+                </div>
+
+
 
 				<div class="uk-width-1-2@s">
 					<label class="uk-form-label">Logo <span class="size-recommended">size recommended: 50x50</span></label>
@@ -118,6 +182,8 @@
 
 @push('script')
 <script>
+    $(".multidatalist").focusin ( function() { $(this).attr("type","email"); });    
+    $(".multidatalist").focusout( function() { $(this).attr("type","text"); });
     // output image preview
     let imagePreview = (ev) => {
         if (ev.target.files && ev.target.files[0]) {

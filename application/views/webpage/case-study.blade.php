@@ -8,301 +8,184 @@
         />
     @endpush
     @include('webpage.layouts.navbar', ['casestudy' => 'active'])
-    @php
-    if (empty($data)) {
-        $data = (object) array("once" => 0);
-    }
-    @endphp
-    <hr class="spacing small--hide">
+ <?php
+if ($filter != NULL) {
+	$search = $filter['search'];
+}else{
+	$search = '';
+}
+?>
 
-    <!-- section banner -->
-    <section id="niion-banner">
-      <div class="container container-no-left pl-mobile-0">
-        <div class="row justify-content-center justify-content-end">
-          @foreach ($data as $row)                
-          <div class="col-sm-5 small--hide">
-              <img src="<?php echo base_url() . 'assets/images/' . $row->img_path ?>" width="605" height="650">              
-          </div>
-          <div class="col-sm-7 d-flex align-items-center padding-about-us pt-mobile-5">
-            <div class="pl-mobile-3 pb-mobile-4">              
-                <span data-aos="fade-left" data-aos-delay="200" class="heading text-secondary-small">{{ $row->category }}</span>
-                <h1 data-aos="fade-left" data-aos-delay="350"><span style="text-transform: uppercase;font-weight: bold;">{{ $row->name }}</span>: Deliver the value of #CarryNewFun to reach the right audience.</h1>
-                <h2 data-aos="fade-left" data-aos-delay="350" class="medium-up--hide">{{ $row->title }}</h2>
-                <!-- <a href="@php echo base_url('case-study/' . str_replace(' ', '-', strtolower($row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\.|#/', '', $row->title)) . '/' . $row->id); @endphp" class="btn bdd-primary-btn mt-5 small--hide" style="font-family: Gelion-SemiBold;">Read More <img src="<?php echo base_url() ?>assets/webpage/icons/12/blackright_arrow_ic@3x.svg"> </a>
-                <a href="@php echo base_url('case-study/' . str_replace(' ', '-', strtolower($row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $row->title)) . '/' . $row->id); @endphp" class="btn bdd-primary-btn mt-3 medium-up--hide" style="font-family: Gelion-SemiBold;">See Case Studies <img src="<?php echo base_url() ?>assets/webpage/icons/12/blackright_arrow_ic@3x.svg"> </a>                 -->
-            </div>
-          </div>
-          <div class="banner-mobile col-11 pl-mobile-0 medium-up--hide">
-            <img src="<?php echo base_url() ?>assets/webpage/image-mobile/mbl-cs-banner@2x.png" class="img-fluid">
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-    <!-- end section -->
+<hr class="spacing small--hide">
+<section id="case-study">
+	<div class="container">
+		<div class="head-page">
+			<div class="row">
+				<div class="col-md-3">
+					<h2>Case Study</h2>
+				</div>
+				<div class="col-md-9">
+					<p>Stories like these inspire and motivate us. See how businesses <br>similar to yours are growing with Facebook marketing.</p>
+				</div>
+			</div>
+		</div>
 
-    <hr class="spacing">
+		<div class="body-page">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="box-grey">
+						<div class="sec-search">
+							<span class="inline-box"><i class="fa fa-search"></i></span><input type="text" name="search" class="form-control" placeholder="Find a Case Study" value="<?=$search?>" />
+						</div>
 
-    <!-- section richtext  -->
-    @if (!empty($component))        
-    @php
-        $count = 0
-    @endphp
-    @foreach ($component as $row)
-    @if ($row->name == 'clients-says' && $count == 0)        
-    <section id="what-out-client-says">
-      <div class="container">
-        <div class="text-left mb-3">
-          <div class="text-left d-flex flex-column">
-            <span data-aos="fade-right" data-aos-delay="200" class="heading text-secondary-small mb-4">WHAT OUR CLIENTS SAYS</span>
-            <h1 data-aos="fade-right" data-aos-delay="350" class="small--hide">{!! $row->description !!}</h1>
-            <h3 data-aos="fade-right" data-aos-delay="350" class="medium-up--hide">{!! $row->description !!}</h3>
-          </div>
-        </div>
-        <div class="text-right d-flex flex-column">
-          <h5 data-aos="fade-left" data-aos-delay="350" class="font-medium bdd-font-blue small--hide">- {{ $row->sub_title }}</h5>
-          <h5 data-aos="fade-left" data-aos-delay="350" class="font-medium bdd-font-blue medium-up--hide">- {{ $row->title }}</h5>
-          <p data-aos="fade-left" data-aos-delay="350" >NIION - Founder & CEO</p>
-        </div>
-      </div>
-    </section>
-    @php
-        $count++;
-    @endphp
-    @endif
-    @endforeach
-    @endif
-    <!-- end section -->
+						<div class="sec-filter">
+							<h4>Filter</h4>
+							<div class="form-group">
+								<label class="label-control">Business Size</label>
+								<select class="form-control" name="bisnis_size" class="select2">
+									<option value="all">All</option>
+									<?php foreach ($bisnis_size as $key => $value) {
+										if ($filter['bisnis_size'] == $value){
+											$selected = 'selected';
+										}else{
+											$selected = '';
+										}
+									?>
+									<option value="<?=$value?>" <?=$selected?>><?=$value?></option>
+									<?php
+									} ?>
+								</select>
+							</div>
 
-    <!-- section case studies -->
-    <section id="case-studies">
-      <div class="bbd-blue_dark-bg py-5 mt-5 pmy-6em dmt-7em" id="case-studies">
-  			<div class="mw-100 w-100 text-center">
-  				<div class="heading-small mb-3">
-  					<span class="heading">Case Studies</span>
-  				</div>
-  				<h3 class="small--hide">
-  					Explore more about our partner success stories.
-  				</h3>
-  				<h3 class="px-4 medium-up--hide">
-  					Meet Base Data Dashboard, Our specialize AI to analyse your business in digital.
-  				</h3>
-  				<div class="case-studies-slider owl-carousel owl-theme m-0 dml-n2 mt-5">
-          @foreach ($results as $row)            
-          @php
-          if (empty($row->img_path)) {
-            $row->img_path = 'default.png';
-          }
-          if (empty($row->logo)) {
-              $row->logo = 'default.png';
-          }
-          @endphp
-            <div class="p-0 pl-2">
-              <!-- <a href="{{ base_url('case-study/' . str_replace(' ', '-', strtolower($row->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $row->title)) . '/' . $row->id) }}"> -->
-              <a href="#">
-                <div class="sc-card">
-                    <img src="{{ !empty($row->img_path) ? base_url('assets/images/' . $row->img_path) : base_url('assets/images/default.png') }}" class="img-fluid overlay-img" style="height: 100%; object-fit: cover; width: 100%;">
-                    <div class="brand-cs flex-column p-3">
-                      <div class="d-flex w-100">
-                        <img src="<?php echo base_url('assets/images/logo/' . $row->logo) ?>" class="img-fluid mr-2" width="40">
-                        <span class="brand-title">
-                          {{ $row->name }}
-                        </span>
-                      </div>
-                      <p class="brand-title">
-                          {{ $row->title }}
-                      </p>
-                    </div>
-                </div>
-              </a>
-            </div>
-            @endforeach
-  				</div>
-          
-          <!-- <a href="@php echo base_url() . 'case-study/' . str_replace(' ', '-', strtolower($results[0]->category)) . '/' . str_replace(' ', '-', preg_replace('/:|&\s|,|;|\./', '', $results[0]->title)) . '/' . $results[0]->id @endphp">
-            <button type="button" class="btn bdd-primary-btn mt-5">
-                Explore More
-                <img src="<?php echo base_url() ?>assets/webpage/icons/12/blackright_arrow_ic.png" class="pl-4 img-fluid" width="34">
-            </button>
-          </a> -->
-  			</div>
-  		</div>
-    </section>
-    <!-- end section -->
+							<div class="form-group">
+								<label class="label-control">Objective</label>
+								<select class="form-control" name="objective" class="select2">
+									<option value="all" style="font-weight: bold;">All</option>
+									<?php foreach ($objective as $key => $value) {
+										if ($filter['objective'] == $value['parent']){
+											$selected = 'selected';
+										}else{
+											$selected = '';
+										}
+									?>
+									<option value="<?=$value['parent']?>" style="font-weight: bold;" <?=$selected?>><?=$value['parent']?></option>
+									<?php
+										foreach ($value['child'] as $x => $y) {
+											if ($filter['objective'] == $y){
+												$selected = 'selected';
+											}else{
+												$selected = '';
+											}
+									?>
+									<option value="<?=$y?>" style="margin-left: 5px;" <?=$selected?>><?=$y?></option>
+									<?php
+										}
+									} ?>
+								</select>
+							</div>
 
-    <!-- section Case Studies -->
-    <!--
-    <section id="news-and-blog">
-      <div class="container">
-        <div class="header-custom row">
-          <span class="text-secondary-small">OUR CASE STUDIES</span>
-          <h3 class="title-post h3 mb-3 col-sm-9">We take digital experiences to the next level</h3>
-          <div class="filter col-sm-3">
-            <select id="filter-menu" class="selectpicker">              
-              @php
-                  $temp = '';
-                  $categories = array();
-              @endphp
-              @foreach ($results as $row)  
-              @if (!in_array($row->category, $categories))                  
-              @php
-                array_push($categories, $row->category);
-              @endphp
-              <option value="{{ $row->category }}">{{ $row->category }}</option>
-              @endif
-              @php
-                  $temp = $row->category;
-              @endphp
-              @endforeach
-            </select>
-          </div>
-        </div>
-        <div class="mb-4"></div>
-        <div class="row case-studies" id="filtered-list"></div>
-        <div class="row">
-          <div class="pagging">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center align-items-center pt-5" id="pagination">
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
-  -->
-    <!-- end section -->
+							<div class="form-group">
+								<label class="label-control">Industry</label>
+								<select class="form-control" name="category" class="select2">
+									<option value="all">All</option>
+									<?php foreach ($industry as $key => $value) {
+										if ($filter['industry'] == $value){
+											$selected = 'selected';
+										}else{
+											$selected = '';
+										}
+									?>
+									<option value="<?=$value?>" <?=$selected?>><?=$value?></option>
+									<?php
+									} ?>
+								</select>
+							</div>
 
-    @include('webpage.layouts.footer')
-    @push('script')
-    <script type="text/javascript">
-    $(document).ready(function() {
-      let filterTag = document.getElementById('filtered-list')
-      let pagination = document.getElementById('pagination')
+							<div class="form-group">
+								<label class="label-control">Product</label>
+								<select class="form-control" name="product" class="select2">
+									<option value="all">All</option>
+									<?php foreach ($product as $key => $value) {
+										if ($filter['product'] == $value){
+											$selected = 'selected';
+										}else{
+											$selected = '';
+										}
+									?>
+									<option value="<?=$value?>" <?=$selected?>><?=$value?></option>
+									<?php
+									} ?>
+								</select>
+							</div>
 
-      const getPagingRange = (current, { min = 1, total = 20, length = 5 } = {}) => {
-        if (length > total) length = total;
+							<div class="form-group">
+								<label class="label-control">Region</label>
+								<select class="form-control" name="region" class="select2">
+									<option value="all">All</option>
+									<?php foreach ($region as $key => $value) {
+										if ($filter['region'] == $value['name']){
+											$selected = 'selected';
+										}else{
+											$selected = '';
+										}
+									?>
+									<option value="<?=$value['name']?>" <?=$selected?>><?=$value['name']?></option>
+									<?php
+									} ?>
+								</select>
+							</div>
 
-        let start = current - Math.floor(length / 2);
-        start = Math.max(start, min);
-        start = Math.min(start, min + total - length);
-      
-        return Array.from({length: length}, (el, i) => start + i);
-      }
-      
-      const getTotalPage = (total, limit) => {    
-        let i = 0,
-            temp = total,
-            pageNumber = []
+							<div class="form-group">
+								<a href="#" class="btn bdd-third-btn mt-3" onclick="filter()">Filter</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<?php 
+					if ($data!=NULL){ ?>
+					<p class="count-result">Showing <span style="font-weight:bold; color: #000;"><?=sizeof($data)?></span> Case Study</p>
+					<div class="row">
+						<?php 
+						foreach ($data as $key => $value) {
+							$string = str_replace(' ', '-', $value->name); // Replaces all spaces with hyphens.
+							$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 
-        if (total < limit) {
-          pageNumber.push(1)
-        } else {
-          while(temp >= limit) {
-            temp = temp - limit
-            pageNumber.push(++i)
-          }
+							$urlna = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+							$urlna = base_url('case-study/' . str_replace(' ', '-', strtolower($value->category)) . '/' . $urlna . '/' . $value->id);
+						?>
+						<div class="col-md-6">
+							<div class="list-case">
+								<a href="<?=$urlna?>">
+									<img src="<?=base_url().'/assets/images/'.$value->img_path?>" class="img-fluid" />
+								</a>
+								<a href="<?=$urlna?>"><h3 class="title"><?= $value->name ?></h3></a>
+								<div class="excerpt">
+									<?= $value->excerpt ?>
+								</div>
+							</div>
+						</div>
+						<?php } ?>
+					</div>
+					<?php }else{
+						echo 'no data';
+					} ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-          if (temp !== 0) {
-            const addOne = pageNumber[pageNumber.length - 1] + 1
-            pageNumber.push(addOne)
-          }
-        }
+<script type="text/javascript">
+	function filter(){
+		var search = $('[name="search"]').val();
+		var bisnis_size = $('[name="bisnis_size"]').find(":selected").val();
+		var industry = $('[name="category"]').find(":selected").val();
+		var product = $('[name="product"]').find(":selected").val();
+		var region = $('[name="region"]').find(":selected").val();
+		var objective = $('[name="objective"]').find(":selected").val();
 
-        return pageNumber.length
-      }
-
-      const getCaseByCategory = (val = '', page = 1) => {
-        const limit = 9
-        
-        const data = {
-          limit,
-          offset: (page - 1) * limit,
-          page
-        }
-
-        $.ajax({
-          dataType: "JSON",
-          url: "<?= base_url('post/getCaseByCategory/') ?>" + val,
-          method: "POST",
-          data: data,
-          beforeSend() {
-            filterTag.innerHTML = `
-            <div class="text-center fa-5x">
-              <i class="fas fa-spinner fa-spin"></i>
-            </div>
-            `
-          },
-          success(res) {
-
-            filterTag.innerHTML = ``
-            pagination.innerHTML = ``
-
-            res.filtered.map((item, i) => {
-              if (!item.img_path) item.img_path = 'default.png'
-              // let url = `${item.category.toLowerCase().replace(/\s/g, '-')}/${item.title.replace(/:|&\s|,|;|\./g, '').replace(/\s/g, '-')}/${item.id}`
-
-              // temp
-              // <a href="<?= base_url('case-study/${url}') ?>">
-
-              filterTag.innerHTML += `
-                <div key="${new Date().getTime()}" class="case-studies col-6 col-sm-8 col-md-6 col-lg-4 mb-4">
-                  <div style="overflow: hidden;">
-                    <a href="#">
-                      <div class="img-box">
-                        <img class="card-img" src="<?php echo base_url(); ?>assets/images/${item.img_path}" class="img-fluid">
-                      </div>
-                    </a>
-                      <div class="card-body">
-                        <span class="text-secondary-small">${item.category}</span>
-                        <div class="mb-3"></div>
-                        <h5 class="card-title" style="border-bottom: 0;">${item.title}</h5>
-                      </div>
-                  </div>
-                </div>
-              `
-            })            
-
-            // Paginating
-            // method 1
-            pageNumber = getPagingRange(parseInt(res.page), {
-              total: getTotalPage(res.all_cases, limit), 
-              length: limit 
-            })
-
-            pageNumber.map(number => 
-              pagination.innerHTML += `
-                <li class="page-item ${parseInt(res.page) == number ? 'active' : ''}">
-                  <a class="page-link" href="#" data-number="${number}">
-                    ${number}
-                  </a>
-                </li>`
-            )
-          }
-        })
-      }
-
-      // Run first time
-      getCaseByCategory()
-
-      // get category selection
-      $('#filter-menu').change(function() {
-        let selectedVal = $(this).val();        
-
-        getCaseByCategory(selectedVal)
-      })            
-
-      // do pagination
-      $(window).load(function() {        
-        $(document).on('click', '.page-item a.page-link', function(e) {
-          e.preventDefault()
-
-          const page = $(this).data('number')
-
-          getCaseByCategory($('#filter-menu').val(), page)
-        })
-      })
-    })
-    
-    </script>
-    @endpush
-@endsection
+		var par = 'search='+search+'&bisnis_size='+bisnis_size+'&industry='+industry+'&product='+product+'&region='+region+'&objective='+objective; 
+		window.location.href = "<?=base_url().'case-study?'?>"+par;
+	}
+</script>

@@ -44,19 +44,48 @@ class Webpage extends MY_Controller
         echo $this->blade->view()->make('webpage.what-we-do', $data);
     }
 
-    public function caseStudy($name = '', $id = '', $category = '')
-    {
+    public function caseStudy($name = '', $id = ''){
         $data['results'] = $this->Case_model->getAllCases()->result();
         $data['title'] = "Case Study";
         $data['description'] = 'Explore more about our partner success stories.';
-        if ($name == '' || $id == '') {
-            $data['data'] = $this->Case_model->getOnlyOneCase()->result();
-            $data['component'] = $this->Post_model->getOnlyOnePost()->result();
-        } else {
-            $data['data'] = $this->Case_model->getCaseById($id)->result();
-            $data['component'] = $this->Post_model->getPostByCaseId($id)->result();
+        
+        if (isset($_GET['search'])) {
+            if ($name == '' || $id == '') {
+                $datana = $this->Case_model->getAllCasesWithPaginationfilter($_GET['search'],$_GET['bisnis_size'],$_GET['industry'],$_GET['product'],$_GET['region'],$_GET['objective'])->result();
+                if (sizeof($datana) == 0) {
+                    $data['data'] = NULL;
+                }else{
+                    $data['data'] = $datana;
+                }
+                $data['component'] = $this->Post_model->getAllPosts()->result();
+            } else {
+                $data['data'] = $this->Case_model->getCaseById($id)->result();
+                $data['component'] = $this->Post_model->getPostByCaseId($id)->result();
+            }
+            $data['filter'] = array(
+                'search' => $_GET['search'],
+                'bisnis_size' => $_GET['bisnis_size'],
+                'industry' => $_GET['industry'],
+                'product' => $_GET['product'],
+                'region' => $_GET['region'],
+                'objective' => $_GET['objective'],
+            );
+        }else{
+            if ($name == '' || $id == '') {
+                $data['data'] = $this->Case_model->getAllCasesWithPagination()->result();
+                $data['component'] = $this->Post_model->getAllPosts()->result();
+            } else {
+                $data['data'] = $this->Case_model->getCaseById($id)->result();
+                $data['component'] = $this->Post_model->getPostByCaseId($id)->result();
+            }
+            $data['filter'] = NULL;
         }
-
+        $data['industry'] = $this->Case_model->industry();
+        $data['bisnis_size'] = $this->Case_model->bisnis_size();
+        $data['product'] = $this->Case_model->product();
+        $data['objective'] = $this->Case_model->objective();
+        $data['categories'] = $this->Case_model->getAllCases()->result();
+        $data['region'] = $this->Case_model->region();
         echo $this->blade->view()->make('webpage.case-study', $data);
     }
 

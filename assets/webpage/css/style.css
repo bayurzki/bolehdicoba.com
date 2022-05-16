@@ -278,7 +278,7 @@ h6 {
 button,
 a.btn,
 .card {
-  border-radius: 0px !important;
+  border-radius: 0px;
 }
 
 button.bdd-secondary-btn:hover {
@@ -324,6 +324,20 @@ button.bdd-secondary-btn:hover {
   color: #fdbe0a;
   background-color: #2b2c35;
   border-color: #2b2c35;
+}
+
+.bdd-third-btn {
+  color: #fff;
+  background-color: #33B8A5;
+  border-color: #33B8A5;
+}
+
+.bdd-third-btn{
+  color: #fff !important;
+}
+
+.btn-rounded{
+  border-radius: 35px !important;
 }
 
 .bdd-primary-bg {
@@ -1681,4 +1695,62 @@ blockquote p{
   line-height: 46px;
   text-align: center;
   color: #373737;
+}
+
+#case-study .head-page{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+#case-study .head-page p{
+  font-size: 18px;
+}
+
+#case-study .head-page h2{
+  font-size: 52px;
+}
+
+.box-grey{
+  box-sizing: border-box;
+  background: #F8F8F8;
+  border: 1px solid #DCDCDC;
+  border-radius: 8px;
+}
+
+.box-grey .sec-search,
+.box-grey .sec-filter{
+  padding: 15px;
+}
+
+.list-case{
+  margin-bottom: 35px;
+}
+
+.list-case h3.title{
+  margin-bottom: 0px;
+}
+.sec-search{
+  position: relative;
+}
+
+.sec-search .inline-box{
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+}
+
+.count-result{
+  color: #808080;
+}
+
+.sec-search input{
+  padding-left: 35px;
+}
+
+#case-detail blockquote p{
+  text-align: left !important;
+}
+
+.box-grey div.form-group{
+  margin-bottom: 10px;
 }

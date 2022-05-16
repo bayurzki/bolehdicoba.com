@@ -78,6 +78,67 @@ class Case_model extends CI_Model
         return $query;
     }
 
+    public function getAllCasesWithPaginationfilter($search,$bisnis_size,$industry,$product,$region,$objective)
+    {
+        $config = $this->config();
+        $config['base_url'] = site_url('post/getPost');
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        if ($bisnis_size != 'all') {
+            $bis = '=';
+        }else{
+            $bis = '!=';
+        }
+
+        if ($industry != 'all') {
+            $ind = '=';
+        }else{
+            $ind = '!=';
+        }
+
+        if ($product != 'all') {
+            $pr = '=';
+        }else{
+            $pr = '!=';
+        }
+
+        if ($region != 'all') {
+            $rg = '=';
+        }else{
+            $rg = '!=';
+        }
+
+        if ($objective != 'all') {
+            $ob = '=';
+        }else{
+            $ob = '!=';
+        }
+        if ($search != '') {
+            $query = $this->db->query("
+                SELECT * FROM case_study WHERE 
+                name LIKE '%$search%' OR excerpt LIKE '%$search%' AND
+                bisnis_size ".$bis." '$bisnis_size' AND 
+                category ".$ind." '$industry' AND 
+                product ".$pr." '$product' AND 
+                region ".$rg." '$region' AND 
+                objective ".$ob." '$objective'
+            ");
+        }else{
+            $query = $this->db->query("
+                SELECT * FROM case_study WHERE 
+                bisnis_size ".$bis." '$bisnis_size' AND 
+                category ".$ind." '$industry' AND 
+                product ".$pr." '$product' AND 
+                region ".$rg." '$region' AND 
+                objective ".$ob." '$objective'
+            ");
+        }
+        
+        return $query;
+    }
+
     public function getCasesLengthByCategory($filter)
     {
         $cond = array('category =' => $filter);
@@ -148,6 +209,93 @@ class Case_model extends CI_Model
 
         $query = $this->db->where('id', $id)->delete('case_study');
 
+        return $query;
+    }
+
+    public function product(){
+        $data = array(
+            'Footwear',
+            'Apparel',
+            'Accesories',
+            'Cosmetics',
+            'Medical Products',
+            'Digital Products'
+        );
+        return $data;
+    }
+
+    public function bisnis_size(){
+        $data = array(
+            'Agency',
+            'Large enterprise',
+            'Small and medium-sized enterprises'
+        );
+        return $data;
+    }
+
+    public function industry(){
+        $data = array(
+            'Automotive',
+            'B2B',
+            'Consumer goods',
+            'E-commerce',
+            'Education',
+            'Entertainment and media',
+            'Financial services',
+            'Gaming',
+            'Health and pharmaceuticals',
+            'Non-profits and organisations',
+            'Professional Services',
+            'Property',
+            'Restaurants',
+            'Retail',
+            'Sports',
+            'Technology',
+            'Telecommunication',
+            'Travel'
+        );
+        return $data;
+    }
+
+    public function objective(){
+        $data = array(
+            array(
+                'parent' => 'Agency',
+                'child' => array(
+                    'Brand awareness',
+                    'Reach',
+                    'Social good',
+                    'Video Views'
+                )
+            ),
+            
+            array(
+                'parent' => 'Consideration',
+                'child' => array(
+                    'App installs',
+                    'Website clicks',
+                    'App engagement',
+                    'Lead generation',
+                    'Post Engagement'
+                ),
+            ),
+
+            array(
+                'parent' => 'Conversion',
+                'child' => array(
+                    'Event responses',
+                    'Website Conversions',
+                    'Catalogue Sales',
+                    'Store Traffic'
+                )
+            )
+        );
+        return $data;
+    }
+
+    public function region(){
+        $query = $this->db->get('province');
+        $query = $query->result_array();
         return $query;
     }
 }

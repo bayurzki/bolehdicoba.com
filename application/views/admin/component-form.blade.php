@@ -588,6 +588,30 @@
                             break;
                         }
                     break;
+                case 10:
+                    switch (value) {
+                        case 'title':
+                            result = true
+                            break;
+                        case 'description':
+                            result = true
+                            break;
+                        case 'image':
+                            result = false
+                            break;
+                        case 'sosmed':
+                            result = true
+                            break;
+                        case 'list':
+                            result = true
+                            break;
+                        case 'submit':
+                            result = false
+                            break;
+                        default:
+                            break;
+                        }
+                    break;
                 default:
                     result = true
                     break;
@@ -721,6 +745,22 @@
 
                         resetValue()
                         break;
+                    case 10:
+                    // set label text for clients-says
+                    $('#label-title').text('Title')
+                    $('#label-sub_title').text('Sub Title')
+                    // set default for banner scale
+                    $('#label-image').html('Image <span class="size-recommended">size recommended: 1596x720</span>')
+                    this.title = true
+                    this.description = true
+                    this.image = false
+                    this.sosmed = true
+                    this.list = true
+                    this.submit = false
+
+                    // Reset all value
+                    resetValue()
+                    break;
                     default:
                         // set label text for clients-says
                         $('#label-title').text('Title')
@@ -1002,6 +1042,15 @@
                         }
                     });
                     break;
+                // Banner
+                case 10:
+                    styleContainer.innerHTML = `                        
+                        <div class="banner">
+                            <img id="image-banner" src="<?= base_url('assets/images/default.png') ?>" class="img-fluid p-mobile-25 w-100">
+                        </div>
+                    `
+                    break;
+                // Title and sub title
                 default:
                     break;
             }            
