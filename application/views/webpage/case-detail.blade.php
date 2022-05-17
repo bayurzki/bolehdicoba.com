@@ -12,6 +12,7 @@
     @endphp
     <?php //var_dump($result->result()) ?>
     <section id="case-detail">
+        <hr class="spacing">
         @foreach ($result->result() as $row)
             @switch(@$row->name)
                 @case('category-and-title')

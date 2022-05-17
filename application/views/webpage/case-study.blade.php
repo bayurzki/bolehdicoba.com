@@ -148,20 +148,39 @@ if ($filter != NULL) {
 					<div class="row">
 						<?php 
 						foreach ($data as $key => $value) {
-							$string = str_replace(' ', '-', $value->name); // Replaces all spaces with hyphens.
-							$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+							if ($value->component > 0) {
+								$string = str_replace(' ', '-', $value->name); // Replaces all spaces with hyphens.
+								$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 
-							$urlna = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
-							$urlna = base_url('case-study/' . str_replace(' ', '-', strtolower($value->category)) . '/' . $urlna . '/' . $value->id);
+								$urlna = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+								$urlna = base_url('case-study/' . str_replace(' ', '-', strtolower($value->category)) . '/' . $urlna . '/' . $value->id);
+							}else{
+								$urlna = '#';
+							}
+							
+							$c_tit = strlen($value->name);
+							if ($c_tit > 25) {
+								$title = substr($value->name, 0, 25).'...';
+							}else{
+								$title = $value->name;
+							}
+
+							$c_excerpt = $value->excerpt;
+
+							if ($c_excerpt > 70) {
+								$excerpt = substr($value->excerpt, 0, 70).'...';
+							}else{
+								$excerpt = $value->excerpt;
+							}
 						?>
 						<div class="col-md-6">
 							<div class="list-case">
 								<a href="<?=$urlna?>">
 									<img src="<?=base_url().'/assets/images/'.$value->img_path?>" class="img-fluid" />
 								</a>
-								<a href="<?=$urlna?>"><h3 class="title"><?= $value->name ?></h3></a>
+								<a href="<?=$urlna?>"><h3 class="title"><?=$title?></h3></a>
 								<div class="excerpt">
-									<?= $value->excerpt ?>
+									<?= $excerpt ?>
 								</div>
 							</div>
 						</div>

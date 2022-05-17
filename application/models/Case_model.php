@@ -72,8 +72,11 @@ class Case_model extends CI_Model
         $this->pagination->initialize($config);
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-        $query = $this->db->get('posts', $config['per_page'], $data['page']);
-        $query = $this->db->get('case_study');
+        //$query = $this->db->get('posts', $config['per_page'], $data['page']);
+        $query = $this->db->query("
+            SELECT *, (SELECT COUNT(*) FROM posts WHERE posts.case_id = case_study.id) AS component FROM case_study 
+            ORDER BY created_at DESC
+        ");
 
         return $query;
     }
@@ -117,7 +120,7 @@ class Case_model extends CI_Model
         }
         if ($search != '') {
             $query = $this->db->query("
-                SELECT * FROM case_study WHERE 
+                SELECT *, (SELECT COUNT(*) FROM posts WHERE posts.case_id = case_study.id) AS component FROM case_study WHERE 
                 name LIKE '%$search%' OR excerpt LIKE '%$search%' AND
                 bisnis_size ".$bis." '$bisnis_size' AND 
                 category ".$ind." '$industry' AND 
@@ -127,7 +130,7 @@ class Case_model extends CI_Model
             ");
         }else{
             $query = $this->db->query("
-                SELECT * FROM case_study WHERE 
+                SELECT *, (SELECT COUNT(*) FROM posts WHERE posts.case_id = case_study.id) AS component FROM case_study WHERE 
                 bisnis_size ".$bis." '$bisnis_size' AND 
                 category ".$ind." '$industry' AND 
                 product ".$pr." '$product' AND 

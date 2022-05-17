@@ -80,6 +80,7 @@ class Webpage extends MY_Controller
             }
             $data['filter'] = NULL;
         }
+        // var_dump($data['data'])
         $data['industry'] = $this->Case_model->industry();
         $data['bisnis_size'] = $this->Case_model->bisnis_size();
         $data['product'] = $this->Case_model->product();

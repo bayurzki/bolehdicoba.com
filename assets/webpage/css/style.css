@@ -147,7 +147,6 @@ button.navbar-toggler[aria-expanded="true"]
 }
 hr.spacing {
   background: transparent !important;
-  margin: 5px !important;
 }
 .m-0 {
   margin: 0;
@@ -1749,8 +1748,35 @@ blockquote p{
 
 #case-detail blockquote p{
   text-align: left !important;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 46px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 
+#case-detail h3{
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#case-detail p{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+#case-detail .spacing{
+  margin: 35px 0;
+}
 .box-grey div.form-group{
   margin-bottom: 10px;
 }
+
