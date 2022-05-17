@@ -194,7 +194,8 @@ if ($filter != NULL) {
 		</div>
 	</div>
 </section>
-
+	@include('webpage.layouts.footer')
+@endsection
 <script type="text/javascript">
 	function filter(){
 		var search = $('[name="search"]').val();

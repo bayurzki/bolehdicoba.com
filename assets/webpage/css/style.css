@@ -128,6 +128,7 @@ button.navbar-toggler span.navbar-toggler-icon {
   -o-transition: 0.3s ease-in-out;
   -moz-transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
+  margin-bottom: 5px;
 }
 button.navbar-toggler[aria-expanded="true"]
   span.navbar-toggler-icon:nth-child(1) {
@@ -1706,7 +1707,7 @@ blockquote p{
 }
 
 #case-study .head-page h2{
-  font-size: 52px;
+  font-size: 42px;
 }
 
 .box-grey{
